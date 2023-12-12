@@ -39,8 +39,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         try {
             user = new ObjectMapper().readValue(request.getInputStream(), User.class);
-            return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(),
-                    user.getPassword(), new ArrayList<>()));
+            return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(),user.getPassword(), new ArrayList<>()));
         } catch (BadCredentialsException bce) {
             // log event failure event
             throw bce;
