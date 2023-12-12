@@ -23,9 +23,10 @@ import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
 
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    @Value("bookws.security.jwt.token.secret")
-    String secret;
+    /*@Value("bookws.security.jwt.token.secret")
+    String secret;*/
     private AuthenticationManager authenticationManager;
+    private static String jwtSecret = System.getenv("jwtSecret");
 
     public JwtAuthenticationFilter(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
@@ -54,8 +55,9 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         String token = JWT.create()
                 .withSubject(user.getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + 1800000))
-                .sign(HMAC512("secret".getBytes()));
-        response.addHeader("Authorization", "Bearer" + token);
+//                .sign(HMAC512("secret".getBytes()));
+                .sign(HMAC512(jwtSecret));
+        response.addHeader("Authorization", "Bearer " + token);
 
     }
 }
