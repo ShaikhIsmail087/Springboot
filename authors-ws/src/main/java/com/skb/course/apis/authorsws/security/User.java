@@ -1,4 +1,4 @@
-package com.skb.course.apis.authorsws.user;
+package com.skb.course.apis.authorsws.security;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,7 +1,6 @@
 package com.skb.course.apis.authorsws.security;
 
-import com.skb.course.apis.authorsws.user.User;
-import com.skb.course.apis.authorsws.user.UserService;
+import com.skb.course.apis.authorsws.security.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -10,22 +9,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private UserService userService;
-
-    public UserDetailsServiceImpl(UserService userService) {
-        this.userService = userService;
-    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        User user = userService.getUserByUsername(username);
+        return new User();
 
-        if(user != null) {
-             return user;
-        } else {
-            // log this
-            throw new UsernameNotFoundException(username + " does not exist");
-        }
     }
 }

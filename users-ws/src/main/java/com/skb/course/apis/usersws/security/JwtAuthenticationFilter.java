@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.stream.Collectors;
 
 import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
 
@@ -63,6 +64,9 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         String token = JWT.create()
                 .withSubject(user.getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + 1800000))
+                .withClaim("roles", user.getAuthorities().stream()
+                        .map(o ->o.getAuthority())
+                        .collect(Collectors.joining(",")))
                 //.sign(HMAC512(secret.getBytes()));
                 .sign(HMAC512(jwtSecret));
 

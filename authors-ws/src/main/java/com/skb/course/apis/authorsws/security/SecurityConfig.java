@@ -15,13 +15,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     private UserDetailsServiceImpl userDetailsService;
-    private BooksWsAuthenticationEntryPoint authenticationEntryPoint;
-
-    public SecurityConfig(BCryptPasswordEncoder bCryptPasswordEncoder, UserDetailsServiceImpl userDetailsService,
-                          BooksWsAuthenticationEntryPoint authenticationEntryPoint) {
+    public SecurityConfig(BCryptPasswordEncoder bCryptPasswordEncoder,UserDetailsServiceImpl userDetailsService) {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-        this.userDetailsService = userDetailsService;
-        this.authenticationEntryPoint = authenticationEntryPoint;
+        this.userDetailsService=userDetailsService;
     }
 
     @Override
@@ -38,8 +34,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .and().httpBasic()
 //                .authenticationEntryPoint(authenticationEntryPoint);
                 .and()
-                .addFilter(new JwtAuthenticationFilter(authenticationManager()))
-                .addFilter(new JwtAuthorizationFilter(authenticationManager(),userDetailsService))
+//                .addFilter(new JwtAuthenticationFilter(authenticationManager()))
+                .addFilter(new JwtAuthorizationFilter(authenticationManager()))
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 
