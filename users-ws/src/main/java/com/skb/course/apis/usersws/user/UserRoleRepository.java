@@ -1,3 +1,4 @@
+/*
 package com.skb.course.apis.usersws.user;
 
 import org.springframework.data.repository.CrudRepository;
@@ -8,3 +9,4 @@ public interface UserRoleRepository extends CrudRepository<UserRoleEntity, Integ
 
     UserEntity findByUserEntity(UserEntity userEntity);
 }
+*/

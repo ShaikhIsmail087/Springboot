@@ -1,3 +1,4 @@
+/*
 package com.skb.course.apis.usersws.user;
 
 import javax.persistence.*;
@@ -63,3 +64,4 @@ public class UserEntity {
         this.userRoleEntities = userRoleEntities;
     }
 }
+*/

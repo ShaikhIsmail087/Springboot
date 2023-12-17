@@ -1,3 +1,4 @@
+/*
 package com.skb.course.apis.usersws.user;
 
 import org.springframework.data.repository.CrudRepository;
@@ -10,3 +11,4 @@ public interface AuthoritiesRepository extends CrudRepository<AuthoritiesEntity,
 
     Set<AuthoritiesEntity> findByRole(String role);
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package com.skb.course.apis.usersws.security;
 
 import com.auth0.jwt.JWT;
@@ -23,8 +24,10 @@ import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
 
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    /*@Value("${bookws.security.jwt.token.secret}")
-    private String secret;*/
+    */
+/*@Value("${bookws.security.jwt.token.secret}")
+    private String secret;*//*
+
 
     private AuthenticationManager authenticationManager;
 
@@ -74,3 +77,4 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     }
 }
+*/

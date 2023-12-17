@@ -1,3 +1,4 @@
+/*
 package com.skb.course.apis.usersws.user;
 
 import javax.persistence.*;
@@ -25,10 +26,12 @@ public class AuthoritiesEntity {
         this.role = role;
     }
 
-    /*@ManyToOne(fetch = FetchType.EAGER,
+    */
+/*@ManyToOne(fetch = FetchType.EAGER,
         cascade = CascadeType.ALL)
     @JoinColumn(name = "Username", nullable = false)
-    private UserEntity userEntity;*/
+    private UserEntity userEntity;*//*
+
 
     public Integer getAuthorityId() {
         return authorityId;
@@ -54,3 +57,4 @@ public class AuthoritiesEntity {
         this.role = role;
     }
 }
+*/
