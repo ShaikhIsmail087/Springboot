@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/v1/users")
 public class UserController {
 
-    @RequestMapping("/login")
-    public String loginUser(@AuthenticationPrincipal OAuth2User oAuth2User) {
+    @RequestMapping("/profile")
+    public String getUserProfile(@AuthenticationPrincipal OAuth2User oAuth2User) {
 
         if (oAuth2User != null) {
             return "Username: " + oAuth2User.getName() + "<br>" +
