@@ -13,12 +13,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
-    private UserDetailsServiceImpl userDetailsService;
-    public SecurityConfig(BCryptPasswordEncoder bCryptPasswordEncoder,UserDetailsServiceImpl userDetailsService) {
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-        this.userDetailsService=userDetailsService;
-    }
+        /*private BCryptPasswordEncoder bCryptPasswordEncoder;
+        private UserDetailsServiceImpl userDetailsService;
+        public SecurityConfig(BCryptPasswordEncoder bCryptPasswordEncoder,UserDetailsServiceImpl userDetailsService) {
+            this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+            this.userDetailsService=userDetailsService;
+        }*/
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -27,20 +27,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
 //                .antMatchers("/v1/books/{bookId}").hasAnyAuthority("USER","ADMIN") //hasAuthority("USER")
 //                .antMatchers("/v1/books").hasAuthority("ADMIN")
-                .antMatchers("/v1/authors/{authorId}").access("hasRole('USER') and hasAuthority('GET_BOOK')")
-                .antMatchers("/v1/authors").access("hasRole('ADMIN') and hasAuthority('CREATE_BOOK')")
-                .anyRequest()
-                .authenticated()
+//                .antMatchers("/v1/authors/{authorId}").access("hasAuthority('USER') and hasAuthority('GET_BOOK')")
+//                .antMatchers("/v1/authors").access("hasAuthority('ADMIN') and hasAuthority('CREATE_BOOK')")
+                .anyRequest().authenticated()
 //                .and().httpBasic()
 //                .authenticationEntryPoint(authenticationEntryPoint);
                 .and()
-//                .addFilter(new JwtAuthenticationFilter(authenticationManager()))
-                .addFilter(new JwtAuthorizationFilter(authenticationManager()))
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .addFilter(new HmacFilter(authenticationManager()));
+//                .addFilter(new JwtAuthorizationFilter(authenticationManager()))
+//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+//                .oauth2Login();
     }
 
-    @Override
+    /*@Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
-    }
+    }*/
 }

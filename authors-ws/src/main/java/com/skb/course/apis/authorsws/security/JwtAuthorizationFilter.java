@@ -1,3 +1,4 @@
+/*
 package com.skb.course.apis.authorsws.security;
 
 import com.auth0.jwt.JWT;
@@ -20,8 +21,10 @@ import java.util.stream.Stream;
 
 public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
-    /*@Value("bookws.security.jwt.token.secret")
-    String secret;*/
+    */
+/*@Value("bookws.security.jwt.token.secret")
+    String secret;*//*
+
 
 
     private static String jwtSecret = System.getenv("jwtSecret");
@@ -71,3 +74,4 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         return null;
     }
 }
+*/
