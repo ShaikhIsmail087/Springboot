@@ -56,6 +56,7 @@ public class BookingController {
         }
     }
 
+
     @DeleteMapping("/booking/{id}")
     public ResponseEntity<String> cancelBooking(@PathVariable Long id) {
         boolean isBookingCancelled = bookingService.cancelBooking(id);
@@ -66,5 +67,6 @@ public class BookingController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No data available for the given booking ID");
         }
     }
+
 
 }

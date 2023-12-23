@@ -119,17 +119,18 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Transactional
-    public boolean cancelBooking(Long id) {
-        Optional<PassengerInfo> optionalPassengerInfo = passengerInfoRepository.findById(id);
+    public boolean cancelBooking(Long bookingId) {
+        Optional<PassengerInfo> passengerInfoOptional = passengerInfoRepository.findById(bookingId);
 
-        if (optionalPassengerInfo.isPresent()) {
-            PassengerInfo passengerInfo = optionalPassengerInfo.get();
+        if (passengerInfoOptional.isPresent()) {
+            PassengerInfo passengerInfo = passengerInfoOptional.get();
 
-            // Implement the logic to handle cancellation, e.g., delete records, update status, etc.
-            // You may also want to check and handle the cancellation of associated payment info
+            // Delete PassengerInfo by Booking ID
+            passengerInfoRepository.deleteById(bookingId);
 
-            passengerInfoRepository.delete(passengerInfo);
+            return true; // Return true when the booking is successfully canceled
         }
-        return false;
+
+        return false; // Return false when the booking ID is not found
     }
 }
