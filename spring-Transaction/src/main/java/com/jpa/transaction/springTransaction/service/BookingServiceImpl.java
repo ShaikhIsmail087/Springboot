@@ -9,10 +9,11 @@ import com.jpa.transaction.springTransaction.repository.PaymentInfoRepository;
 import com.jpa.transaction.springTransaction.utility.PaymentGatewaySimulator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -44,5 +45,91 @@ public class BookingServiceImpl implements BookingService {
         bookingResponse.setTotalFare(passengerInfo.getFare());
 
         return bookingResponse;
+    }
+
+    @Transactional(readOnly = true)
+    public BookingResponse getBooking(Long id) {
+        Optional<PassengerInfo> optionalPassengerInfo = passengerInfoRepository.findById(id);
+
+        if (optionalPassengerInfo.isPresent()) {
+            PassengerInfo passengerInfo = optionalPassengerInfo.get();
+
+            BookingResponse bookingResponse = new BookingResponse();
+            bookingResponse.setStatus("SUCCESS");
+            bookingResponse.setPassengerInfo(passengerInfo);
+            bookingResponse.setPnr(UUID.randomUUID().toString().split("-")[0]);
+            bookingResponse.setTotalFare(passengerInfo.getFare());
+
+            return bookingResponse;
+        } else {
+            return null; // Handle the case when the booking with the given ID is not found
+        }
+    }
+
+    @Transactional(readOnly = true)
+    public List<BookingResponse> getAllBookings() {
+        List<BookingResponse> bookingResponses = new ArrayList<>();
+
+        // Retrieve all passenger info records
+        List<PassengerInfo> passengerInfos = passengerInfoRepository.findAll();
+
+        for (PassengerInfo passengerInfo : passengerInfos) {
+            BookingResponse bookingResponse = new BookingResponse();
+            bookingResponse.setStatus("SUCCESS");
+            bookingResponse.setPassengerInfo(passengerInfo);
+            bookingResponse.setPnr(UUID.randomUUID().toString().split("-")[0]);
+            bookingResponse.setTotalFare(passengerInfo.getFare());
+
+            bookingResponses.add(bookingResponse);
+        }
+
+        return bookingResponses;
+    }
+
+    @Transactional
+    public BookingResponse updateBooking(Long id, BookingRequest bookingRequest) {
+        Optional<PassengerInfo> optionalPassengerInfo = passengerInfoRepository.findById(id);
+
+        if (optionalPassengerInfo.isPresent()) {
+            PassengerInfo existingPassengerInfo = optionalPassengerInfo.get();
+            PassengerInfo updatedPassengerInfo = bookingRequest.getPassengerInfo();
+
+            // Update relevant fields in existingPassengerInfo with values from updatedPassengerInfo
+            existingPassengerInfo.setName(updatedPassengerInfo.getName());
+            existingPassengerInfo.setEmail(updatedPassengerInfo.getEmail());
+            existingPassengerInfo.setSource(updatedPassengerInfo.getSource());
+            existingPassengerInfo.setDestination(updatedPassengerInfo.getDestination());
+            existingPassengerInfo.setPickupTime(updatedPassengerInfo.getPickupTime());
+            existingPassengerInfo.setArrivalTime(updatedPassengerInfo.getArrivalTime());
+            existingPassengerInfo.setFare(updatedPassengerInfo.getFare());
+            existingPassengerInfo.setTravelDate(updatedPassengerInfo.getTravelDate());
+
+            passengerInfoRepository.save(existingPassengerInfo);
+
+            BookingResponse bookingResponse = new BookingResponse();
+            bookingResponse.setStatus("SUCCESS");
+            bookingResponse.setPassengerInfo(existingPassengerInfo);
+            bookingResponse.setPnr(UUID.randomUUID().toString().split("-")[0]);
+            bookingResponse.setTotalFare(existingPassengerInfo.getFare());
+
+            return bookingResponse;
+        } else {
+            return null; // Handle the case when the booking with the given ID is not found
+        }
+    }
+
+    @Transactional
+    public boolean cancelBooking(Long id) {
+        Optional<PassengerInfo> optionalPassengerInfo = passengerInfoRepository.findById(id);
+
+        if (optionalPassengerInfo.isPresent()) {
+            PassengerInfo passengerInfo = optionalPassengerInfo.get();
+
+            // Implement the logic to handle cancellation, e.g., delete records, update status, etc.
+            // You may also want to check and handle the cancellation of associated payment info
+
+            passengerInfoRepository.delete(passengerInfo);
+        }
+        return false;
     }
 }
