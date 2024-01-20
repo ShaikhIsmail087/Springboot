@@ -86,3 +86,33 @@ VALUES (2, "ROLE_ADMIN", "CREATE_BOOK");
 
 INSERT INTO `api_security_db`.`AUTHORITIES` (`AUTHORITY_ID`,`ROLE`,`AUTHORITY`)
 VALUES(3,"ROLE_USER","GET_BOOK");
+
+--Joining Tables
+create database Udemy;
+use Udemy;
+create table university(university_id int primary key,university_name varchar(20) not null);
+insert into university values(1,'MIT'),(2,'Harvard');
+
+create table student (student_id int primary key,student_name varchar(30) not null default '',student_age tinyint not null,university int,foreign key (university) references university(university_id));
+insert into student values(1,'Kevin',19,null),(2,'Joe',22,null),(3,'Anna',23,1),(4,'Adam',29,1),(5,'Daniel',25,2),(6,'Ariana',43,null),(7,'Michele',67,null);
+select * from student;
+select * from university;
+--Inner join
+SELECT Student.student_name, UNIVERSITY.university_name FROM 
+Student INNER JOIN UNIVERSITY ON Student.university = 
+UNIVERSITY.university_id;
+
+--Left join
+SELECT Student.student_name, UNIVERSITY.university_name FROM 
+Student LEFT JOIN UNIVERSITY ON Student.university = 
+UNIVERSITY.university_id;
+
+--Right join
+SELECT Student.student_name, UNIVERSITY.university_name FROM 
+Student RIGHT JOIN UNIVERSITY ON Student.university = 
+UNIVERSITY.university_id;
+
+--Full join
+SELECT Student.student_name, UNIVERSITY.university_name FROM 
+Student FULL JOIN UNIVERSITY ON Student.university = 
+UNIVERSITY.university_id;
