@@ -116,3 +116,21 @@ UNIVERSITY.university_id;
 SELECT Student.student_name, UNIVERSITY.university_name FROM 
 Student FULL JOIN UNIVERSITY ON Student.university = 
 UNIVERSITY.university_id;
+
+--online w3school sql editor
+SELECT c.CustomerName, o.OrderDate
+FROM Customers AS c
+JOIN Orders AS o ON c.CustomerID = o.CustomerID;
+
+SELECT c.CustomerName, o.OrderDate
+FROM Customers AS c
+JOIN Orders AS o ON c.CustomerID = o.CustomerID ORDER BY CustomerName;
+
+SELECT c.CustomerName, COUNT(o.CustomerID) AS NumOfOrders
+FROM Customers AS c
+JOIN Orders AS o ON o.CustomerID = c.CustomerID GROUP BY o.CustomerID ORDER BY NumOfOrders DESC;
+
+SELECT c.Country, COUNT(o.CustomerID) AS NumOfOrders
+FROM Customers AS c
+JOIN Orders AS o ON c.CustomerID = o.CustomerID GROUP BY o.Country ORDER BY NumOfOrders DESC;
+
