@@ -107,7 +107,7 @@ SELECT Student.student_name, UNIVERSITY.university_name FROM
 Student LEFT JOIN UNIVERSITY ON Student.university = 
 UNIVERSITY.university_id;
 
---Right join
+--Right join not will work
 SELECT Student.student_name, UNIVERSITY.university_name FROM 
 Student RIGHT JOIN UNIVERSITY ON Student.university = 
 UNIVERSITY.university_id;
@@ -134,3 +134,59 @@ SELECT c.Country, COUNT(o.CustomerID) AS NumOfOrders
 FROM Customers AS c
 JOIN Orders AS o ON c.CustomerID = o.CustomerID GROUP BY o.Country ORDER BY NumOfOrders DESC;
 
+--subqueries non-correleted queries
+SELECT * FROM Customers where CustomerID <> (select max(CustomerID) from Customers);
+--will not EXECUTE
+SELECT * FROM Customers where CustomerID <> (select CustomerID from Customers where Country='USA');
+--this will WORK
+select CustomerID from Customers where Country='USA';
+SELECT * FROM Customers where CustomerID not in <> (select CustomerID from Customers where Country='USA');
+
+--Not preferable with subqueries
+SELECT
+    countryTable.name AS Country
+FROM
+    country AS countryTable
+WHERE
+    22 = (SELECT COUNT(*) FROM city AS c WHERE c.country_code=countryTable.code);
+	
+--preferable with join 
+SELECT 
+    countryTable.name AS Country,
+    COUNT(cityTable.country_code) AS numOfCities
+FROM
+    city AS cityTable
+        JOIN
+    country AS countryTable ON cityTable.country_code = countryTable.code
+GROUP BY cityTable.country_code
+HAVING numOfCities = 22
+ORDER BY numOfCities DESC;
+
+--Transaction through INNODB
+show table status where name='city';
+
+--COMMIT
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SELECT * FROM PERSON;
+UPDATE person SET university=2 WHERE person_id=1;
+COMMIT;
+
+--ROLLBACK
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SELECT * FROM PERSON;
+UPDATE person SET university=2 WHERE person_id=1;
+COMMIT;
+ROLLBACK;
+
+--SAVEPOINT
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SELECT * FROM person;
+SAVEPOINT save1;
+UPDATE person SET person_name='Kevin B' WHERE person_id=1;
+SAVEPOINT save2;
+UPDATE person SET university=2 WHERE person_id=1;
+ROLLBACK TO save1;
+RELEASE SAVEPOINT save1;
