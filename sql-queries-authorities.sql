@@ -172,21 +172,47 @@ SELECT * FROM PERSON;
 UPDATE person SET university=2 WHERE person_id=1;
 COMMIT;
 
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SELECT * FROM student;
+UPDATE student SET university=2 WHERE student_id=1;
+COMMIT;
+
 --ROLLBACK
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
-SELECT * FROM PERSON;
-UPDATE person SET university=2 WHERE person_id=1;
+SELECT * FROM student;
+UPDATE student SET university=2 WHERE student_id=1;
 COMMIT;
 ROLLBACK;
 
 --SAVEPOINT
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
-SELECT * FROM person;
+SELECT * FROM student;
 SAVEPOINT save1;
-UPDATE person SET person_name='Kevin B' WHERE person_id=1;
+UPDATE student SET student_name='Kevin B' WHERE student_id=1;
 SAVEPOINT save2;
-UPDATE person SET university=2 WHERE person_id=1;
+UPDATE student SET university=2 WHERE student_id=1;
 ROLLBACK TO save1;
 RELEASE SAVEPOINT save1;
+
+--VIEW
+create table students (studentId int primary key,studentName varchar(30),university varchar(30),city varchar(20));
+insert into students values(1,'Kevin','MIT','Boston'),(2,'Adam','ELTE','Budapest'),(3,'Joe','MIT','Boston'),(4,'Hans','University of Berlin','Berlin'),(5,'John','Harvard','Cambridge');
+SELECT * FROM students;
+--create view
+CREATE VIEW students_view AS SELECT StudentName, University FROM Students;
+SELECT * FROM students_view;
+--update view
+set sql_safe_updates= 0;
+update students_view set university='ELTE' where studentName='Joe';
+
+--Of course we can update a view we have created earlier:
+UPDATE student_view SET University='MIT' WHERE StudentName='Joe';
+
+--And of course we can remove views we have created:
+DROP VIEW student_view;
+
+
+
