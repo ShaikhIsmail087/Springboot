@@ -214,5 +214,133 @@ UPDATE student_view SET University='MIT' WHERE StudentName='Joe';
 --And of course we can remove views we have created:
 DROP VIEW student_view;
 
+--PROCEDURE
+
+DELIMITER $$
+
+CREATE PROCEDURE firstProcedure()
+
+BEGIN
+    SELECT * FROM PERSON;
+END $$
+
+DELIMITER ;
+
+--We can show the existing stored procedures:
+
+SHOW PROCEDURE STATUS;
+
+--And we can remove a stored procedure:
+
+DROP PROCEDURE IF EXISTS myProcedure;
+
+DELIMITER $$
+
+CREATE PROCEDURE countTotalCities(
+    IN country CHAR(3),
+    OUT total INT
+)
+
+BEGIN
+    SELECT COUNT(*) 
+    INTO total
+    FROM city
+    WHERE country_code = country;
+END $$
+
+DELIMITER ;
+
+with variables and parameters create a procedure that has:
+
+a country code as an input parameter
+
+it can count the number of cities in a given country (the country is the parameter) that starts with letter 'A'
+
+it prints the result in the procedure (so no need to return or store the value)
+
+DELIMITER $$
+
+CREATE PROCEDURE exercise(
+	IN country CHAR(3)
+)
+
+BEGIN
+	
+    DECLARE counter INT DEFAULT 0;
+    
+    SELECT COUNT(*) INTO counter
+    FROM city 
+    WHERE country_code = country 
+    AND name LIKE 'A%';
+
+    SELECT counter;
+END $$
+
+DELIMITER ;
 
 
+DELIMITER $$
+
+CREATE PROCEDURE loopExample()
+
+BEGIN
+
+    DECLARE a INT DEFAULT 1;
+    DECLARE s VARCHAR(255);
+    
+    loop_label: LOOP
+	IF a > 10 THEN
+	    LEAVE loop_label;
+	END IF;
+    
+	SET a = a + 1;
+        SET s = CONCAT(s,a,' ');
+    END LOOP;
+    
+    SELECT a;
+
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE loopExample()
+
+BEGIN
+
+    DECLARE a INT DEFAULT 1;
+    DECLARE s VARCHAR(255);
+    
+    SET s = '';
+    
+    WHILE LENGTH(s)<7 DO
+        SET a = a + 1;
+        SET s = CONCAT(s,a,'-');
+    END WHILE;
+    
+    SELECT s;
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE multipleValues(
+    OUT population_counter INT,
+    OUT life_counter INT
+)
+
+BEGIN
+
+    SELECT COUNT(*) INTO population_counter
+    FROM country
+    WHERE population > 100000000;
+    
+    SELECT COUNT(*) INTO life_counter
+    FROM country
+    WHERE life_expectancy > 70;
+
+END $$
+
+DELIMITER ;
