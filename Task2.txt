@@ -1,0 +1,789 @@
+Task given:
+
+TIL>>>Replacing paytm to sodexo for TIL(1003)
+
+apply.jsp
+
+Paytm>>>replace to sodexo(1003)
+1042 ,1007,1021,1009,1034,1000>>> Paytm
+
+<% if((mealvoucherController.queryVPFDetails(sapId)).size() == 0 && (companyCode.equals("1000") || companyCode.equals("1007") || companyCode.equals("1009") || companyCode.equals("1021") || companyCode.equals("1034") || companyCode.equals("1042"))) { %>
+								 <input type="checkbox" name="chkKYC" id="chkKYC"  onclick="goFurther()">I hereby confirm that I have Installed Paytm on my phone AND my full KYC has been completed.<br> 
+								<% } %>
+								<% else if((mealvoucherController.queryVPFDetails(sapId)).size() == 0 && (companyCode.equals("1003") || companyCode.equals("1048") || companyCode.equals("1051") || companyCode.equals("1043") || companyCode.equals("1030") || companyCode.equals("1031") || companyCode.equals("1050") || companyCode.equals("1046") || companyCode.equals("1047") || companyCode.equals("1041") || companyCode.equals("1040") || companyCode.equals("1004") || companyCode.equals("1036"))){ %>
+								<input type="checkbox" name="chkKYC" id="chkKYC"  onclick="goFurther()">I hereby confirm that I have my full KYC has been completed.<br>   
+					            <% } %>
+
+<% 
+						if (companyCode.equals("1000") || companyCode.equals("1007") || companyCode.equals("1009") || companyCode.equals("1021") || companyCode.equals("1034") || companyCode.equals("1042")){
+					%>
+			                <ul>			                	
+								<li>The company trusts the employee to make a correct declaration. Any tax liability arising out of a wrong declaration would rest with the employee.</li>
+								<li>The above amount so declared shall be adjusted from the Special Pay Allowance. Hence for the Digital Food Wallet to be enabled, the existing Special Pay Allowance would need to have at-least the equivalent amount.</li>
+								<li>Any Digital Food Wallet declaration made till 12th of the month will be considered in the same month. Declarations made after 12th will be considered from next month.</li>
+								<li>The option once declared cannot be changed for the remaining part of the financial year. In subsequent financial year, unless changed, the current declaration will be carried forward.</li>
+								<li>Please ensure that the correct mobile number is being entered. Amount transferred to Digital Food Wallet linked to an incorrect number may not be recoverable.</li>
+								<li>If you are updating your mobile number, please ensure that you have updated the same in the Paytm wallet also.</li>
+								<!-- 	<li>In case of any query, you may raise a Service Desk request on Timescape via People Express under <a href="https://bmctgitsso.timesgroup.com:443/atriumsso/UI/Login?realm=BmcRealm&goto=https://servicedesk.timesgroup.com:443/arsys/" target="_blank">Digital Food Wallet</a> or mail to <a href="mailto:corporate.helpdesk@Paytm.com" class="underline">corporate.helpdesk@Paytm.com</a></li> -->
+								<li>In case of any query, you may raise a ticket </a></li>
+								
+			                </ul>
+					<% 
+						}else if(companyCode.equals("1003") || companyCode.equals("1048") || companyCode.equals("1051") || companyCode.equals("1043") || companyCode.equals("1030") || companyCode.equals("1031") || companyCode.equals("1050") || companyCode.equals("1046") || companyCode.equals("1047") || companyCode.equals("1041") || companyCode.equals("1040") || companyCode.equals("1004") || companyCode.equals("1036")){
+					%>
+							<ul>			                	
+								<li>The company trusts the employee to make a correct declaration. Any tax liability arising out of a wrong declaration would rest with the employee.</li>
+								<li>The above amount so declared shall be adjusted from the Special Pay Allowance. Hence for the Digital Food Wallet to be enabled, the existing Special Pay Allowance would need to have at-least the equivalent amount.</li>
+								<li>Any Digital Food Wallet declaration made till 12th of the month will be considered in the same month. Declarations made after 12th will be considered from next month.</li>
+								<li>The option once declared cannot be changed for the remaining part of the financial year. In subsequent financial year, unless changed, the current declaration will be carried forward.</li>
+								<li>Please ensure that the correct mobile number is being entered. Amount transferred to Digital Food Wallet linked to an incorrect number may not be recoverable.</li>
+								<li>If you are updating your mobile number, please ensure that you have updated the same in the sodexo wallet also.</li>
+								<!-- 	<li>In case of any query, you may raise a Service Desk request on Timescape via People Express under <a href="https://bmctgitsso.timesgroup.com:443/atriumsso/UI/Login?realm=BmcRealm&goto=https://servicedesk.timesgroup.com:443/arsys/" target="_blank">Digital Food Wallet</a> or mail to <a href="mailto:corporate.helpdesk@Paytm.com" class="underline">corporate.helpdesk@Paytm.com</a></li> -->
+								<li>In case of any query, you may raise a ticket on TIL <a href="https://hrhelpdesk.timesinternet.in/support/home" target="_blank">HR Helpdesk</a></li>
+								
+			                </ul>
+					<% 
+						}else{
+					%>
+						<ul>
+			                	<li>Employees availing subsidized meals at Ahmedabad, Baroda, Bhopal, Delhi (Express Building), Lucknow, Mumbai (CST Office, Airoli) or Patna Offices or any of the Press Locations should opt for Rs.1100/- per month.</li>
+								<li>The company trusts the employee to make a correct declaration. Any tax liability arising out of a wrong declaration would rest with the employee.</li>
+								<li>The above amount so declared shall be adjusted from the Special Pay Allowance. Hence for the Digital Food Wallet to be enabled, the existing Special Pay Allowance would need to have at-least the equivalent amount.</li>
+								<li>Any Digital Food Wallet declaration made till 15th of the month will be considered in the same month. Declarations made after 16th will be considered from next month.</li>
+								<li>The option once declared cannot be changed for the remaining part of the financial year. In subsequent financial year, unless changed, the current declaration will be carried forward.</li>
+								<li>Please ensure that the correct mobile number is being entered. Amount transferred to Digital Food Wallet linked to an incorrect number may not be recoverable.</li>
+								<li>If you are updating your mobile number, please ensure that you have updated the same in the Paytm wallet also.</li>
+								<!-- 	<li>In case of any query, you may raise a Service Desk request on Timescape via People Express under <a href="https://bmctgitsso.timesgroup.com:443/atriumsso/UI/Login?realm=BmcRealm&goto=https://servicedesk.timesgroup.com:443/arsys/" target="_blank">Digital Food Wallet</a> or mail to <a href="mailto:corporate.helpdesk@Paytm.com" class="underline">corporate.helpdesk@Paytm.com</a></li> -->
+								<li>In case of any query, you may raise a Service Desk request on Timescape via People Express under <a href="https://remedy.timesgroup.com/rsso/start?bypass-auth=true&tenant=BMCNewRealm&goto=https://servicedesk.timesgroup.com" target="_blank">Digital Food Wallet</a> or mail to <a href="mailto:corporate.helpdesk@Paytm.com" class="underline">corporate.helpdesk@Paytm.com</a></li>
+								
+			                </ul>
+					<% 
+						}
+					%>								
+
+App services  >>>>purchase approval
+
+BEUT >>>> 1042     >>>>> PHead (Cumpusary irrsepective of any amount)  finance1 & finance2 cumpalsary
+
+TGBCL(1005)/ZOOM(1006)/BTDT(1501)/MNDIL (1021)  >>>finance1 & finance2 cumpalsary >>> PHead ABOVE 3L  (negotiation value)
+
+ip server >>>>>> 10.200.120.230
+
+if(isEmpty(document.priceApprovalMain.requestedBy7.value.length))
+	{
+		error += "Fill Negotiated Value \n";
+		if(parseInt(flag)==0)
+			{
+				document.priceApprovalMain.requestedBy7.focus();
+				flag = 1;
+			}
+	}
+	
+	supportApprove.jsp
+
+Changes done by me:-
+
+fieldCheck.js>>>>>/usr/local/timescape/programs/tomcat9.0.30/webapps/timescape/sapep/employeeselfservice/priceapprovalGrp/jscripts
+
+
+if(document.priceApprovalMain.company.value == 1042)
+	{
+		if(document.priceApprovalMain.select13.value == 0 && document.priceApprovalMain.requestedBy7.value > 0){
+			error += "Please select Procurement Head \n";
+			if(parseInt(flag)==0)
+			{
+				document.priceApprovalMain.select13.focus();
+				flag = 1;
+			}
+		}
+	}
+	
+	if(document.priceApprovalMain.company.value == 1005 || document.priceApprovalMain.company.value == 1006 || document.priceApprovalMain.company.value == 1501 || document.priceApprovalMain.company.value == 1021)
+	{
+		if(document.priceApprovalMain.select13.value == 0 && document.priceApprovalMain.select12.value == 0 && document.priceApprovalMain.requestedBy7.value >= 300000){
+			error += "Please select Procurement Head \n";
+			if(parseInt(flag)==0)
+			{
+				document.priceApprovalMain.select13.focus();
+				flag = 1;
+			}
+		}
+	}
+	
+supportPriceApproval.jsp>>>/usr/local/timescape/programs/tomcat9.0.30/webapps/timescape/sapep/employeeselfservice/priceapprovalGrp/common
+
+else if(appType.equals("AP33")) {
+    if (statusType.equals("A")) {
+        if (!AP34.equals("0")) {
+            sendMailto = AP34;
+            approvers = priceApprovalWebController.getApprovers(priceid, sendMailto);
+            mailStatus1 = priceApprovalWebController.sendIndividualMail(createdBy[0], htmlStrForCreater, priceid);
+        } else {
+            if (AP4.equals("0") && AP34.equals("0")) {
+                if (AP5.equals("0")) {
+                    status2 = priceApprovalWebController.updateStatus("CL", priceid);
+                } else {
+                    updateStatus_AP4 = priceApprovalWebController.updateStatus_AP4("A", priceid);
+                    status2 = priceApprovalWebController.updateStatus("L", priceid);
+                }
+                mailStatus1 = priceApprovalWebController.sendIndividualMail(createdBy[0], htmlStrForCreater, priceid); // added by Shreedhar on 28-JAN-2020.
+            } else {
+                sendMailto = AP4;
+                approvers = priceApprovalWebController.getApprovers(priceid, sendMailto);
+                mailStatus1 = priceApprovalWebController.sendIndividualMail(createdBy[0], htmlStrForCreater, priceid);
+            }
+        }
+    } else if (statusType.equals("H") || statusType.equals("R")) {
+        approvers = priceApprovalWebController.getApprovers(priceid, CREATEDBY);
+    }
+}else if (appType.equals("AP5") && statusType.equals("A")) {
+    status2 = priceApprovalWebController.updateStatus("CL", priceid);
+    updateStatus_AP4A = priceApprovalWebController.updateStatus_AP4_Revert("L", priceid);
+} else if (appType.equals("AP34")) {
+    if (statusType.equals("A")) {
+        if (AP4.equals("0")) {
+            if (AP5.equals("0")) {
+                status2 = priceApprovalWebController.updateStatus("CL", priceid);
+            } else {
+                updateStatus_AP4 = priceApprovalWebController.updateStatus_AP4("A", priceid);
+                status2 = priceApprovalWebController.updateStatus("L", priceid);
+            }
+            mailStatus1 = priceApprovalWebController.sendIndividualMail(createdBy[0], htmlStrForCreater, priceid); // added by Shreedhar on 28-JAN-2020.
+        } else {
+            sendMailto = AP4;
+            approvers = priceApprovalWebController.getApprovers(priceid, sendMailto);
+            mailStatus1 = priceApprovalWebController.sendIndividualMail(createdBy[0], htmlStrForCreater, priceid);
+        }
+    } else if (statusType.equals("H") || statusType.equals("R")) {
+        approvers = priceApprovalWebController.getApprovers(priceid, CREATEDBY);
+    }
+} else if (appType.equals("AP5") && statusType.equals("A")) {
+    status2 = priceApprovalWebController.updateStatus("CL", priceid);
+    updateStatus_AP4A = priceApprovalWebController.updateStatus_AP4_Revert("L", priceid);
+}
+
+
+Tracing the path to make changes>>>>
+>>>>>fieldCheck.js>>>
+
+function postRemarks(priceId,userOId,approverType,statusType,company)
+{
+	
+/*	var remarks = document.postRemarksForm.remarksContainer.value;
+
+	remarks = remarks.replace(/^\s+|\s+$/g,'');
+
+
+	
+	if(remarks.length!=0 && remarks!='')
+	{
+				if (window.XMLHttpRequest)
+				  { // code for IE7+, Firefox, Chrome, Opera, Safari
+					xmlhttp = new XMLHttpRequest();
+				  }
+				else
+				  {// code for IE6, IE5
+				  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+				  }
+			
+				  xmlhttp.onreadystatechange=function()
+					{
+						if (xmlhttp.readyState==4 && xmlhttp.status==200)
+						{
+							//alert("Done");
+							document.getElementById('poststatus').innerHTML = "Remarks Posted Successfully!!!";
+						    window.close();	
+						}
+					}
+
+				  var random = Math.random();
+				  var URL    = '../common/insertRemarksSubmit.jsp?priceId='+priceId+'&userId='+userOId+'&approverType='+approverType+'&statusType='+statusType+'&remarks='+remarks+'&random='+random+'&company='+company;
+				 //alert(URL);
+				  xmlhttp.open("GET",URL,true);
+		    	  xmlhttp.send();
+				//url = '../common/showDetails.jsp?tOId='+userOId+'&priceid='+priceId;
+				// window.opener.location.href=url;
+				 //window.opener.location.reload();
+
+	}*/
+
+	frmObj = document.postRemarksForm;
+	var remarks = frmObj.remarksContainer.value;
+
+	remarks = remarks.replace(/^\s+|\s+$/g,'');
+
+	
+	if(remarks.length!=0 && remarks!='')
+	{
+		
+
+		var random = Math.random();
+		//var uri = "../common/insertRemarksSubmit.jsp?priceId="+priceId+'&userId='+userOId+'&approverType='+approverType+'&random="+random;
+		//var res = encodeURIComponent(uri);
+		
+		//loadURL(uri , priceId, userOId, approverType, remarks , statusType);
+		
+		
+
+		//window.open(uri , priceId, userOId, approverType, remarks , statusType);
+	
+	}else
+	{
+		alert("Please enter remarks");
+		 return;
+
+	}
+	frmObj.remarks.value = remarks;
+
+	document.postRemarksForm.remarksPost.disabled = true;  
+	document.postRemarksForm.remarksPost.value = 'Please Wait...';  
+
+
+	frmObj.action="../common/insertRemarksSubmit.jsp?priceId="+priceId+'&userId='+userOId+'&approverType='+approverType+'&statusType='+statusType+'&random='+random+'&company='+company;
+	frmObj.submit( );
+	//self.close();
+
+}
+
+>>>>/common/insertRemarksSubmit.jsp>>>>>
+
+<%@ page import="java.util.Hashtable, java.util.ArrayList" %>
+<%@ page import="com.bccl.util.HtmlUtil,com.bccl.util.Utility, java.io.UnsupportedEncodingException, java.net.URLDecoder"%>
+<jsp:useBean id="priceApprovalWebController" class="com.bccl.priceapproval.web.controller.priceApprovalWebController" /> 
+<%@ page language="java" %>
+<%@ include file="../includes/sessionCheck.jsp"%>
+<%//@ page errorPage="../common/errorPage.jsp"%>
+<%@ include file="../includes/empHeader.jsp"%>
+<link href = "../style/global.css" rel = "stylesheet" type = "text/css" />
+<script Language="JavaScript" src="../jscripts/fieldCheck.js"></script>
+
+<%
+	Hashtable remarksData	= new Hashtable();
+
+    long tOId		    = Long.parseLong(request.getParameter("userId"));
+
+    String userOid		= Long.toString(tOId);
+    String priceid		= (String) request.getParameter("priceId");
+    String company		= (String) request.getParameter("company");
+    String approverType = (String) request.getParameter("approverType");
+    String statusType   = (String) request.getParameter("statusType");
+
+    //String remarks  = (String)request.getParameter("remarksContainer");
+    String remarks  = (String)request.getParameter("remarks");
+    String flag  = (String)request.getParameter("flag");
+	//out.println("remarks="+remarks);
+
+	/*   
+	if(company.equals("1000") && approverType.equals("AP4"))
+    {
+        remarks ="Ref. Delegated Authority: "+remarks;
+
+    }else  if(!company.equals("1000") && approverType.equals("AP5"))
+    {
+        remarks ="Ref. Delegated Authority: "+remarks;
+    }
+	*/
+
+    remarksData.put("PRICEID",Utility.replaceQuoteOracle(priceid));
+    remarksData.put("APPROVERTYPE",Utility.replaceQuoteOracle(approverType));
+    remarksData.put("STATUSTYPE",Utility.replaceQuoteOracle(statusType));
+    remarksData.put("REMARKS",Utility.replaceQuoteOracle(remarks));
+    //remarksData.put("FLAG",flag);
+    remarksData.put("USERID",Utility.replaceQuoteOracle(userOid));
+
+	//remarks = Utility.replaceQuoteOracle(remarks);
+
+	boolean	status	= priceApprovalWebController.insertRemarks(remarksData);
+		//boolean status2 = priceapprovalWebController.changeVendorTableStatus(tOId, priceid);
+		//boolean status3 = priceapprovalWebController.changeUserTableStatus(tOId, priceid); 	
+    	//System.out.println(status);
+if(statusType.equals("X")){
+
+%>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" height="200px">
+    <tr>
+		<td colspan="2" align="center" valign="middle" class="normal">Remarks posted successfully. Click <a href="javascript:navigateCallRemarks('<%=timescapeUserOId%>','<%=priceid%>');" class="normal"><b>here</b></a> to check posted remark.</td>
+    </tr> 
+ </table>
+<%}else if(status == true ){
+//response.sendRedirect("../common/supportApprove.jsp?priceid="+priceid+"&appType="+approverType+"&statusType="+statusType);
+response.sendRedirect("../common/supportPriceApproval.jsp?priceid="+priceid+"&appType="+approverType+"&statusType="+statusType);
+}else{
+%>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+    <td colspan="2" align="center"><span class="normal">Sorry there was an Error while posting your Remark.</td><tr>
+ </table>
+<%}
+%>
+
+>>>../common/supportPriceApproval.jsp>>>>
+then changes in supportPriceApproval
+
+for jdbc sql query
+
+priceApprovalWebController.java>>>>/usr/local/timescape/projects/timescape/dev/src/webapp/com/bccl/priceapproval/web/controller
+
+/**
+		@Method Name 		: updateStatus_AP4()
+		@Arguments			: String status1,long priceId
+		@Returns			: Boolean - status
+		@Comments			: This method returns an boolean.
+							  
+	*/
+
+	public boolean updateStatus_AP4(String status1,String priceId)
+	{
+
+		return (priceapprovalObj.updateStatus_AP4(status1,priceId));
+    }
+
+
+/**
+		@Method Name 		: updateStatus_AP4_Revert()
+		@Arguments			: String status1,long priceId
+		@Returns			: Boolean - status
+		@Comments			: This method returns an boolean.
+							  
+	*/
+
+	public boolean updateStatus_AP4_Revert(String status1,String priceId)
+	{
+
+		return (priceapprovalObj.updateStatus_AP4_Revert(status1,priceId));
+    }
+
+
+PriceApprovalController.java>>>>>/usr/local/timescape/projects/timescape/dev/src/priceapproval/com/bccl/priceapproval/controller
+
+/**
+		@Method Name 		: updateStatus_AP4()
+		@Arguments			: String status1,long priceId
+		@Returns			: Boolean - status
+		@Comments			: This method returns an boolean.
+							  
+	*/
+
+public boolean updateStatus_AP4(String status1,String priceId)
+	{
+
+		//ArrayList requestsAllList = null
+		boolean status = true;
+
+		try
+		{
+			status = userObj.updateStatus_AP4(status1,priceId);
+		}
+		catch (Exception e)
+		{
+			Log.printLog(application, e, "updateStatus_AP4()", 2);
+		}
+		
+		return status;				
+    }
+
+
+	/**
+		@Method Name 		: updateStatus_AP4_Revert()
+		@Arguments			: String status1,long priceId
+		@Returns			: Boolean - status
+		@Comments			: This method returns an boolean.
+							  
+	*/
+
+	public boolean updateStatus_AP4_Revert(String status1,String priceId)
+	{
+
+		//ArrayList requestsAllList = null
+		boolean status = true;
+
+		try
+		{
+			status = userObj.updateStatus_AP4_Revert(status1,priceId);
+		}
+		catch (Exception e)
+		{
+			Log.printLog(application, e, "updateStatus_AP4_Revert()", 2);
+		}
+		
+		return status;				
+    }
+
+
+User.java>>>>>>>>>>/usr/local/timescape/projects/timescape/dev/src/priceapproval/com/bccl/priceapproval/domain
+
+
+/**
+		@Method Name 		: updateStatus_AP4(status,priceId)
+		@Arguments			: status,priceId
+		@Returns			: boolean
+		@Comments			: This method returns an Status as ArrayList.
+							  
+	*/
+
+	public boolean updateStatus_AP4(String status1,String priceId) throws Exception 
+	{
+        boolean status          = true;
+        boolean upStatus          = true;
+        String insertRemarksStr = "";
+        String updatePAStr = "";
+
+        try
+        {
+        	insertRemarksStr = "UPDATE PRICEAPP4 SET APPROVER4_STATUS = '"+status1+"' WHERE PRICEID LIKE '"+priceId+"'";
+
+                      status = sqlUtility.executeUpdate(insertRemarksStr,null);
+        }
+        catch (Exception e)
+        {
+
+            Log.printLog(application, "approver4_status  = " +insertRemarksStr, 1);
+        }
+
+		finally {
+            
+			Log.printLog(application, "approver4_status = " +insertRemarksStr, 1);
+			
+        }
+
+
+        return status;
+	}
+
+
+	 /**
+		@Method Name 		: updateStatus_AP4_Revert(status,priceId)
+		@Arguments			: status,priceId
+		@Returns			: boolean
+		@Comments			: This method returns an Status as ArrayList.
+							  
+	*/
+
+	public boolean updateStatus_AP4_Revert(String status1,String priceId) throws Exception 
+	{
+        boolean status          = true;
+        boolean upStatus          = true;
+        String insertRemarksStr = "";
+        String updatePAStr = "";
+
+        try
+        {
+        	insertRemarksStr = "UPDATE PRICEAPP4 SET APPROVER4_STATUS = '"+status1+"' WHERE PRICEID LIKE '"+priceId+"'";
+
+                      status = sqlUtility.executeUpdate(insertRemarksStr,null);
+        }
+        catch (Exception e)
+        {
+
+            Log.printLog(application, "updateStatus_AP4_Revert  = " +insertRemarksStr, 1);
+        }
+
+		finally {
+            
+			Log.printLog(application, "updateStatus_AP4_Revert = " +insertRemarksStr, 1);
+			
+        }
+
+
+        return status;
+	}
+
+	public String toString () 
+		{
+			return "priceapproval -- Domain Contoller.";
+		}
+
+ }
+ 
+
+SQLUtility.java>>>>>/usr/local/timescape/projects/timescape/dev/src/utility/com/bccl/util
+
+/**
+        Method Name 					: executeUpdate()
+        Arguments						: String sqlQuery
+        Returns						    : boolean updateFlag
+        Comments						: Returns an ArrayList after executing the sql statement
+    */
+
+    public boolean executeUpdate(String sqlQuery) 
+        throws Exception {
+
+        return executeUpdate(sqlQuery, null);
+
+    }
+
+    /**
+        Method Name 					: executeUpdate()
+        Arguments						: String sqlQuery, Object[] bindParams
+        Returns						    : boolean updateFlag
+        Comments						: Returns an ArrayList after executing the sql statement
+    */
+
+    public boolean executeUpdate(String sqlQuery, Object[] bindParams) 
+        throws Exception {
+
+
+        PreparedStatement pst = null;
+        boolean  updateFlag = false;
+        Connection conn = null;
+
+        int updateCount = 0;
+
+        try {
+
+            conn = getConnection();
+            pst = conn.prepareStatement(sqlQuery);
+
+			Log.printLog(application, "SQLUtility.java: executeUpdate(): query : "+sqlQuery, 1);
+
+            if (bindParams != null) {
+            
+                for (int i = 0; i < bindParams.length; i++) {
+
+                    if(bindParams[i] == null) {
+
+                      pst.setNull(i+1,Types.JAVA_OBJECT);
+                    }else{
+
+                      pst.setObject(i+1,bindParams[i]);
+                    }
+                }
+            }
+
+
+            updateCount   = pst.executeUpdate();
+
+			Log.printLog(application, "SQLUtility.java: executeUpdate(): updateCount : "+updateCount, 1);
+
+            if (updateCount > 0) {
+
+                updateFlag = true;
+            }
+
+        } finally {
+
+            closeConnection(null, pst, conn);
+		}
+
+        return updateFlag;
+    }
+
+
+>>>Methods which is invoked during above operation
+
+insertRemarksStr()
+viewStatusStr()
+viewApproverDetailsStr()
+getApproverEmail()
+getApprovers()
+remarksStrNew()
+getAdminLst()
+remarksStr()
+
+executeBatch()
+>>changeAllTableStatus() >>changePriceApp4TableStatusStr1 >>changePriceApp4TableStatusStr2
+
+executeUpdate()
+>>>updateStatus()  >>updatePAStr
+
+.log
+TIME              :: 16:3:14
+MESSAGE           :: insertRemarksStr  = INSERT INTO PRICEAPP5 (PRICEID, USERID, REMARKS, APPROVERTYPE, CREATEDBY, MODIFIEDBY)VALUES('GCB1000000077',28163,'test33','AP32',28163,28163)
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:14
+MESSAGE           :: viewStatusStr  = SELECT A.PRICEID ,TO_CHAR(A.NEGOTIATION_PC_DATE,'DD-MON-YYYY'),A.NEGOTIATION_PC_MEETING_VENUE ,A.NEGOTIATION_VALUE ,A.FINALIZED_VENDOR_NAME ,A.PAYMENT_TERMS ,A.SAVINGS ,A.PRODUCT_SERVICE_PROJECT_NAME ,A.INDENTED_USER ,A.PACKAGE_NAME_SANCTION ,A.TOTAL_BUDGET ,A.PO_COMMITTED_TILL_DATE ,A.BALANCE_BUDGET ,A.REQUIREMENT ,A.DESCRIPTION1 ,A.DESCRIPTION2 ,A.DESCRIPTION3 ,A.ATTACHMENT1 ,A.ATTACHMENT2 ,A.ATTACHMENT3 ,A.PRODUCT1 ,A.PRODUCT2 ,A.PRODUCT3 ,A.RATE1 ,A.RATE2 ,A.RATE3 ,A.BENCHMARK1 ,A.BENCHMARK2 ,A.BENCHMARK3 ,A.RECOMMENEDATION ,(SELECT B.FIRSTNAME||' '||B.LASTNAME FROM TIMESGROUPEMPLOYEE B WHERE B.TIMESCAPEUSEROID = A.SUPPORTEDBY_DIRECTOR1) AS SUPPORTEDBY_DIRECTOR1,(SELECT C.FIRSTNAME||' '||C.LASTNAME FROM TIMESGROUPEMPLOYEE C WHERE C.TIMESCAPEUSEROID = A.SUPPORTEDBY_DIRECTOR2) AS SUPPORTEDBY_DIRECTOR2 ,(SELECT D.FIRSTNAME||' '||D.LASTNAME FROM TIMESGROUPEMPLOYEE D WHERE D.TIMESCAPEUSEROID = A.APPROVER11) AS APPROVER11 ,(SELECT E.FIRSTNAME||' '||E.LASTNAME FROM TIMESGROUPEMPLOYEE E WHERE E.TIMESCAPEUSEROID = A.APPROVER12) AS APPROVER12 ,(SELECT F.FIRSTNAME||' '||F.LASTNAME FROM TIMESGROUPEMPLOYEE F WHERE F.TIMESCAPEUSEROID = A.APPROVER13) AS APPROVER13 ,(SELECT G.FIRSTNAME||' '||G.LASTNAME FROM TIMESGROUPEMPLOYEE G WHERE G.TIMESCAPEUSEROID = A.APPROVER21) AS APPROVER21 ,(SELECT H.FIRSTNAME||' '||H.LASTNAME FROM TIMESGROUPEMPLOYEE H WHERE H.TIMESCAPEUSEROID = A.APPROVER22) AS APPROVER22 ,(SELECT I.FIRSTNAME||' '||I.LASTNAME FROM TIMESGROUPEMPLOYEE I WHERE I.TIMESCAPEUSEROID = A.APPROVER23) AS APPROVER23 ,(SELECT J.FIRSTNAME||' '||J.LASTNAME FROM TIMESGROUPEMPLOYEE J WHERE J.TIMESCAPEUSEROID = A.APPROVER31) AS APPROVER31 ,(SELECT K.FIRSTNAME||' '||K.LASTNAME FROM TIMESGROUPEMPLOYEE K WHERE K.TIMESCAPEUSEROID = A.APPROVER32) AS APPROVER32 ,(SELECT L.FIRSTNAME||' '||L.LASTNAME FROM TIMESGROUPEMPLOYEE L WHERE L.TIMESCAPEUSEROID = A.APPROVER33) AS APPROVER33 ,(SELECT M.FIRSTNAME||' '||M.LASTNAME FROM TIMESGROUPEMPLOYEE M WHERE M.TIMESCAPEUSEROID = A.APPROVER4)  AS APPROVER4 ,(SELECT N.FIRSTNAME||' '||N.LASTNAME FROM TIMESGROUPEMPLOYEE N WHERE N.TIMESCAPEUSEROID = A.APPROVER5)  AS APPROVER5 ,(SELECT O.FIRSTNAME||' '||O.LASTNAME FROM TIMESGROUPEMPLOYEE O WHERE O.TIMESCAPEUSEROID = A.APPROVER6)  AS APPROVER6 ,A.SUPPORTEDBY_DIRECTOR1 AS SP1,A.SUPPORTEDBY_DIRECTOR2 AS SP2,A.APPROVER11 AS AP11,A.APPROVER12 AS AP12,A.APPROVER13 AS AP13,A.APPROVER21 AS AP21,A.APPROVER22 AS AP22,A.APPROVER23 AS AP23,A.APPROVER31 AS AP31,A.APPROVER32 AS AP32,A.APPROVER33 AS AP33,A.APPROVER4 AS AP4,A.APPROVER5 AS AP5,A.APPROVER6 AS AP6,A.CREATEDBY ,TO_CHAR(A.CREATEDON,'DD-MON-YYYY HH24:MI:SS'),A.MODIFIEDBY ,TO_CHAR(A.MODIFIEDON,'DD-MON-YYYY HH24:MI:SS'),A.STATUS,A.COST_AVOIDANCE ,A.COMPANY_NAME1 ,A.COMPANY_NAME2 ,A.COMPANY_NAME3 ,A.UMO1 ,A.UMO2 ,A.UMO3 ,A.REMARKS1 ,A.REMARKS2 ,A.REMARKS3 ,A.VALIDITY_PERIOD ,A.APPROVER34 AS AP34 ,A.APPROVER7 AS AP7 ,(SELECT P.EMAILID FROM TIMESGROUPEMPLOYEE P WHERE P.TIMESCAPEUSEROID = A.CREATEDBY), (SELECT Q.FIRSTNAME||' '||Q.LASTNAME FROM TIMESGROUPEMPLOYEE Q WHERE Q.TIMESCAPEUSEROID = A.APPROVER34)  AS APPROVER34 ,(SELECT R.FIRSTNAME||' '||R.LASTNAME FROM TIMESGROUPEMPLOYEE R WHERE R.TIMESCAPEUSEROID = A.APPROVER7)  AS APPROVER7 ,A.CATEGORY, (SELECT O.FIRSTNAME||' '||O.LASTNAME FROM TIMESGROUPEMPLOYEE O WHERE O.TIMESCAPEUSEROID = A.APPROVER8)  AS APPROVER8 ,A.APPROVER8 AS AP8, A.SANCTIONED_REFERENCE_TYPE , A.REFERENCE_NUMBER, A.DATE_OF_APPROVAL,  A.APPROVER35 AS AP35 ,(SELECT X.FIRSTNAME||' '||X.LASTNAME FROM TIMESGROUPEMPLOYEE X WHERE X.TIMESCAPEUSEROID = A.APPROVER35)  AS APPROVER35 ,A.APPROVER36 AS AP36, (SELECT Z.FIRSTNAME||' '||Z.LASTNAME FROM TIMESGROUPEMPLOYEE Z WHERE Z.TIMESCAPEUSEROID = A.APPROVER36)  AS APPROVER36, A.DESCRIPTION4 ,A.ATTACHMENT4 ,A.DESCRIPTION5 ,A.ATTACHMENT5 ,A.DESCRIPTION6 ,A.ATTACHMENT6 ,A.DESCRIPTION7 ,A.ATTACHMENT7 ,A.DESCRIPTION8 ,A.ATTACHMENT8 ,A.DESCRIPTION9 ,A.ATTACHMENT9 ,A.DESCRIPTION10 ,A.ATTACHMENT10, (SELECT ZZ.FIRSTNAME||' '||ZZ.LASTNAME FROM TIMESGROUPEMPLOYEE ZZ WHERE ZZ.TIMESCAPEUSEROID = A.CREATEDBY)  AS INITIATORNAME,  TO_CHAR(A.CREATEDON,'DD-MON-YYYY'),  A.COMPANY,  (SELECT C.COMP_ABBR FROM COMP_COMPANY C WHERE C.COMP_COMPANYCODE = A.company) AS companyname  FROM PRICEAPP1 A  WHERE A.PRICEID = 'GCB1000000077' 
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:14
+MESSAGE           :: viewApproverDetailsStr  = SELECT SUPPORTEDBY_DIRECTOR1_STATUS,SUPPORTEDBY_DIRECTOR2_STATUS,APPROVER11_STATUS,APPROVER12_STATUS,APPROVER13_STATUS,APPROVER21_STATUS,APPROVER22_STATUS,APPROVER23_STATUS,APPROVER31_STATUS,APPROVER32_STATUS,APPROVER33_STATUS,APPROVER4_STATUS,APPROVER5_STATUS,APPROVER6_STATUS,TO_CHAR(SUPPORTEDBY_DIRECTOR1_DATE,'DD-MM-YYYY HH24:MI:SS'),TO_CHAR(SUPPORTEDBY_DIRECTOR2_DATE,'DD-MM-YYYY HH24:MI:SS'),TO_CHAR(APPROVER11_DATE,'DD-MM-YYYY HH24:MI:SS'),TO_CHAR(APPROVER12_DATE,'DD-MM-YYYY HH24:MI:SS'),TO_CHAR(APPROVER13_DATE,'DD-MM-YYYY HH24:MI:SS'),TO_CHAR(APPROVER21_DATE,'DD-MM-YYYY HH24:MI:SS'),TO_CHAR(APPROVER22_DATE,'DD-MM-YYYY HH24:MI:SS'),TO_CHAR(APPROVER23_DATE,'DD-MM-YYYY HH24:MI:SS'),TO_CHAR(APPROVER31_DATE,'DD-MM-YYYY HH24:MI:SS'),TO_CHAR(APPROVER32_DATE,'DD-MM-YYYY HH24:MI:SS'),TO_CHAR(APPROVER33_DATE,'DD-MM-YYYY HH24:MI:SS'),TO_CHAR(APPROVER4_DATE,'DD-MM-YYYY HH24:MI:SS'),TO_CHAR(APPROVER5_DATE,'DD-MM-YYYY HH24:MI:SS'),TO_CHAR(APPROVER6_DATE,'DD-MM-YYYY HH24:MI:SS'),APPROVER34_STATUS,APPROVER7_STATUS,TO_CHAR(APPROVER34_DATE,'DD-MM-YYYY HH24:MI:SS'),TO_CHAR(APPROVER7_DATE,'DD-MM-YYYY HH24:MI:SS'),APPROVER8_STATUS,TO_CHAR(APPROVER8_DATE,'DD-MM-YYYY HH24:MI:SS'),APPROVER35_STATUS,TO_CHAR(APPROVER35_DATE,'DD-MM-YYYY HH24:MI:SS'),APPROVER36_STATUS,TO_CHAR(APPROVER36_DATE,'DD-MM-YYYY HH24:MI:SS')  FROM PRICEAPP4  WHERE PRICEID ='GCB1000000077'
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:14
+MESSAGE           :: getApproverEmail  =  SELECT  (SELECT A.EMAILID FROM TIMESGROUPEMPLOYEE A WHERE A.TIMESCAPEUSEROID = A.APPROVER11) AS APP1,   (SELECT A.EMAILID FROM TIMESGROUPEMPLOYEE A WHERE A.TIMESCAPEUSEROID = A.APPROVER21) AS APP2,   (SELECT A.EMAILID FROM TIMESGROUPEMPLOYEE A WHERE A.TIMESCAPEUSEROID = A.APPROVER31) AS APP3,   (SELECT A.EMAILID FROM TIMESGROUPEMPLOYEE A WHERE A.TIMESCAPEUSEROID = A.APPROVER12) AS APP4,   (SELECT A.EMAILID FROM TIMESGROUPEMPLOYEE A WHERE A.TIMESCAPEUSEROID = A.APPROVER22) AS APP5,   (SELECT A.EMAILID FROM TIMESGROUPEMPLOYEE A WHERE A.TIMESCAPEUSEROID = A.APPROVER32) AS APP6,   (SELECT A.EMAILID FROM TIMESGROUPEMPLOYEE A WHERE A.TIMESCAPEUSEROID = A.APPROVER13) AS APP7,   (SELECT A.EMAILID FROM TIMESGROUPEMPLOYEE A WHERE A.TIMESCAPEUSEROID = A.APPROVER23) AS APP8,   (SELECT A.EMAILID FROM TIMESGROUPEMPLOYEE A WHERE A.TIMESCAPEUSEROID = A.APPROVER33) AS APP9,   (SELECT A.EMAILID FROM TIMESGROUPEMPLOYEE A WHERE A.TIMESCAPEUSEROID = A.APPROVER34) AS APP10,  (SELECT A.EMAILID FROM TIMESGROUPEMPLOYEE A WHERE A.TIMESCAPEUSEROID = A.APPROVER35) AS APP11,  (SELECT A.EMAILID FROM TIMESGROUPEMPLOYEE A WHERE A.TIMESCAPEUSEROID = A.APPROVER36) AS APP12,  (SELECT A.EMAILID FROM TIMESGROUPEMPLOYEE A WHERE A.TIMESCAPEUSEROID = A.APPROVER4)  AS APP13,  (SELECT A.EMAILID FROM TIMESGROUPEMPLOYEE A WHERE A.TIMESCAPEUSEROID = A.APPROVER5)  AS APP14,  (SELECT A.EMAILID FROM TIMESGROUPEMPLOYEE A WHERE A.TIMESCAPEUSEROID = A.APPROVER6)  AS APP15,  (SELECT A.EMAILID FROM TIMESGROUPEMPLOYEE A WHERE A.TIMESCAPEUSEROID = A.APPROVER7)  AS APP16,  (SELECT A.EMAILID FROM TIMESGROUPEMPLOYEE A WHERE A.TIMESCAPEUSEROID = A.APPROVER8)  AS APP17,   (SELECT A.EMAILID FROM TIMESGROUPEMPLOYEE A WHERE A.TIMESCAPEUSEROID = A.SUPPORTEDBY_DIRECTOR1)  AS APP18,  (SELECT A.EMAILID FROM TIMESGROUPEMPLOYEE A WHERE A.TIMESCAPEUSEROID = A.SUPPORTEDBY_DIRECTOR2)  AS APP19    FROM PRICEAPP1 A   WHERE A.PRICEID = 'GCB1000000077'
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:14
+MESSAGE           :: getApprovers  = SELECT (SELECT A.EMAILID FROM TIMESGROUPEMPLOYEE A WHERE A.TIMESCAPEUSEROID = 28163) AS SD1, B.PRODUCT_SERVICE_PROJECT_NAME, B.INDENTED_USER, B.NEGOTIATION_VALUE, B.REQUIREMENT,  B.FINALIZED_VENDOR_NAME, B.TOTAL_BUDGET  FROM PRICEAPP1 B  WHERE B.PRICEID = 'GCB1000000077' 
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:14
+MESSAGE           :: getApprovers  = SELECT (SELECT A.EMAILID FROM TIMESGROUPEMPLOYEE A WHERE A.TIMESCAPEUSEROID = 28163) AS SD1, B.PRODUCT_SERVICE_PROJECT_NAME, B.INDENTED_USER, B.NEGOTIATION_VALUE, B.REQUIREMENT,  B.FINALIZED_VENDOR_NAME, B.TOTAL_BUDGET  FROM PRICEAPP1 B  WHERE B.PRICEID = 'GCB1000000077' 
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:14
+MESSAGE           :: getApprovers  = SELECT (SELECT A.EMAILID FROM TIMESGROUPEMPLOYEE A WHERE A.TIMESCAPEUSEROID = 28163) AS SD1, B.PRODUCT_SERVICE_PROJECT_NAME, B.INDENTED_USER, B.NEGOTIATION_VALUE, B.REQUIREMENT,  B.FINALIZED_VENDOR_NAME, B.TOTAL_BUDGET  FROM PRICEAPP1 B  WHERE B.PRICEID = 'GCB1000000077' 
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:14
+MESSAGE           :: SQLUtility.java: executeBatch(): query : UPDATE PRICEAPP4 SET APPROVER32_STATUS = 'A',APPROVER32_DATE = SYSDATE WHERE PRICEID = 'GCB1000000077' counts[i] 1
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:14
+MESSAGE           :: SQLUtility.java: executeBatch(): query : UPDATE PRICEAPP1 SET MODIFIEDON = SYSDATE WHERE PRICEID = 'GCB1000000077' counts[i] 1
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:14
+MESSAGE           :: SQLUtility.java: executeBatch(): flag : true
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:14
+MESSAGE           :: changePriceApp4TableStatusStr1  = UPDATE PRICEAPP4 SET APPROVER32_STATUS = 'A',APPROVER32_DATE = SYSDATE WHERE PRICEID = 'GCB1000000077' 
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:14
+MESSAGE           :: changePriceApp4TableStatusStr2  = UPDATE PRICEAPP1 SET MODIFIEDON = SYSDATE WHERE PRICEID = 'GCB1000000077' 
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:16
+MESSAGE           :: viewStatusStr  = SELECT A.PRICEID ,TO_CHAR(A.NEGOTIATION_PC_DATE,'DD-MON-YYYY'),A.NEGOTIATION_PC_MEETING_VENUE ,A.NEGOTIATION_VALUE ,A.FINALIZED_VENDOR_NAME ,A.PAYMENT_TERMS ,A.SAVINGS ,A.PRODUCT_SERVICE_PROJECT_NAME ,A.INDENTED_USER ,A.PACKAGE_NAME_SANCTION ,A.TOTAL_BUDGET ,A.PO_COMMITTED_TILL_DATE ,A.BALANCE_BUDGET ,A.REQUIREMENT ,A.DESCRIPTION1 ,A.DESCRIPTION2 ,A.DESCRIPTION3 ,A.ATTACHMENT1 ,A.ATTACHMENT2 ,A.ATTACHMENT3 ,A.PRODUCT1 ,A.PRODUCT2 ,A.PRODUCT3 ,A.RATE1 ,A.RATE2 ,A.RATE3 ,A.BENCHMARK1 ,A.BENCHMARK2 ,A.BENCHMARK3 ,A.RECOMMENEDATION ,(SELECT B.FIRSTNAME||' '||B.LASTNAME FROM TIMESGROUPEMPLOYEE B WHERE B.TIMESCAPEUSEROID = A.SUPPORTEDBY_DIRECTOR1) AS SUPPORTEDBY_DIRECTOR1,(SELECT C.FIRSTNAME||' '||C.LASTNAME FROM TIMESGROUPEMPLOYEE C WHERE C.TIMESCAPEUSEROID = A.SUPPORTEDBY_DIRECTOR2) AS SUPPORTEDBY_DIRECTOR2 ,(SELECT D.FIRSTNAME||' '||D.LASTNAME FROM TIMESGROUPEMPLOYEE D WHERE D.TIMESCAPEUSEROID = A.APPROVER11) AS APPROVER11 ,(SELECT E.FIRSTNAME||' '||E.LASTNAME FROM TIMESGROUPEMPLOYEE E WHERE E.TIMESCAPEUSEROID = A.APPROVER12) AS APPROVER12 ,(SELECT F.FIRSTNAME||' '||F.LASTNAME FROM TIMESGROUPEMPLOYEE F WHERE F.TIMESCAPEUSEROID = A.APPROVER13) AS APPROVER13 ,(SELECT G.FIRSTNAME||' '||G.LASTNAME FROM TIMESGROUPEMPLOYEE G WHERE G.TIMESCAPEUSEROID = A.APPROVER21) AS APPROVER21 ,(SELECT H.FIRSTNAME||' '||H.LASTNAME FROM TIMESGROUPEMPLOYEE H WHERE H.TIMESCAPEUSEROID = A.APPROVER22) AS APPROVER22 ,(SELECT I.FIRSTNAME||' '||I.LASTNAME FROM TIMESGROUPEMPLOYEE I WHERE I.TIMESCAPEUSEROID = A.APPROVER23) AS APPROVER23 ,(SELECT J.FIRSTNAME||' '||J.LASTNAME FROM TIMESGROUPEMPLOYEE J WHERE J.TIMESCAPEUSEROID = A.APPROVER31) AS APPROVER31 ,(SELECT K.FIRSTNAME||' '||K.LASTNAME FROM TIMESGROUPEMPLOYEE K WHERE K.TIMESCAPEUSEROID = A.APPROVER32) AS APPROVER32 ,(SELECT L.FIRSTNAME||' '||L.LASTNAME FROM TIMESGROUPEMPLOYEE L WHERE L.TIMESCAPEUSEROID = A.APPROVER33) AS APPROVER33 ,(SELECT M.FIRSTNAME||' '||M.LASTNAME FROM TIMESGROUPEMPLOYEE M WHERE M.TIMESCAPEUSEROID = A.APPROVER4)  AS APPROVER4 ,(SELECT N.FIRSTNAME||' '||N.LASTNAME FROM TIMESGROUPEMPLOYEE N WHERE N.TIMESCAPEUSEROID = A.APPROVER5)  AS APPROVER5 ,(SELECT O.FIRSTNAME||' '||O.LASTNAME FROM TIMESGROUPEMPLOYEE O WHERE O.TIMESCAPEUSEROID = A.APPROVER6)  AS APPROVER6 ,A.SUPPORTEDBY_DIRECTOR1 AS SP1,A.SUPPORTEDBY_DIRECTOR2 AS SP2,A.APPROVER11 AS AP11,A.APPROVER12 AS AP12,A.APPROVER13 AS AP13,A.APPROVER21 AS AP21,A.APPROVER22 AS AP22,A.APPROVER23 AS AP23,A.APPROVER31 AS AP31,A.APPROVER32 AS AP32,A.APPROVER33 AS AP33,A.APPROVER4 AS AP4,A.APPROVER5 AS AP5,A.APPROVER6 AS AP6,A.CREATEDBY ,TO_CHAR(A.CREATEDON,'DD-MON-YYYY HH24:MI:SS'),A.MODIFIEDBY ,TO_CHAR(A.MODIFIEDON,'DD-MON-YYYY HH24:MI:SS'),A.STATUS,A.COST_AVOIDANCE ,A.COMPANY_NAME1 ,A.COMPANY_NAME2 ,A.COMPANY_NAME3 ,A.UMO1 ,A.UMO2 ,A.UMO3 ,A.REMARKS1 ,A.REMARKS2 ,A.REMARKS3 ,A.VALIDITY_PERIOD ,A.APPROVER34 AS AP34 ,A.APPROVER7 AS AP7 ,(SELECT P.EMAILID FROM TIMESGROUPEMPLOYEE P WHERE P.TIMESCAPEUSEROID = A.CREATEDBY), (SELECT Q.FIRSTNAME||' '||Q.LASTNAME FROM TIMESGROUPEMPLOYEE Q WHERE Q.TIMESCAPEUSEROID = A.APPROVER34)  AS APPROVER34 ,(SELECT R.FIRSTNAME||' '||R.LASTNAME FROM TIMESGROUPEMPLOYEE R WHERE R.TIMESCAPEUSEROID = A.APPROVER7)  AS APPROVER7 ,A.CATEGORY, (SELECT O.FIRSTNAME||' '||O.LASTNAME FROM TIMESGROUPEMPLOYEE O WHERE O.TIMESCAPEUSEROID = A.APPROVER8)  AS APPROVER8 ,A.APPROVER8 AS AP8, A.SANCTIONED_REFERENCE_TYPE , A.REFERENCE_NUMBER, A.DATE_OF_APPROVAL,  A.APPROVER35 AS AP35 ,(SELECT X.FIRSTNAME||' '||X.LASTNAME FROM TIMESGROUPEMPLOYEE X WHERE X.TIMESCAPEUSEROID = A.APPROVER35)  AS APPROVER35 ,A.APPROVER36 AS AP36, (SELECT Z.FIRSTNAME||' '||Z.LASTNAME FROM TIMESGROUPEMPLOYEE Z WHERE Z.TIMESCAPEUSEROID = A.APPROVER36)  AS APPROVER36, A.DESCRIPTION4 ,A.ATTACHMENT4 ,A.DESCRIPTION5 ,A.ATTACHMENT5 ,A.DESCRIPTION6 ,A.ATTACHMENT6 ,A.DESCRIPTION7 ,A.ATTACHMENT7 ,A.DESCRIPTION8 ,A.ATTACHMENT8 ,A.DESCRIPTION9 ,A.ATTACHMENT9 ,A.DESCRIPTION10 ,A.ATTACHMENT10, (SELECT ZZ.FIRSTNAME||' '||ZZ.LASTNAME FROM TIMESGROUPEMPLOYEE ZZ WHERE ZZ.TIMESCAPEUSEROID = A.CREATEDBY)  AS INITIATORNAME,  TO_CHAR(A.CREATEDON,'DD-MON-YYYY'),  A.COMPANY,  (SELECT C.COMP_ABBR FROM COMP_COMPANY C WHERE C.COMP_COMPANYCODE = A.company) AS companyname  FROM PRICEAPP1 A  WHERE A.PRICEID = 'GCB1000000077' 
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:16
+MESSAGE           :: viewApp2Str  = SELECT VENDORID ,PRICEID ,VENDOR ,INITIALOFFER ,FINALOFFER ,DELIVERYPERIOD ,WARRANTYPERIOD ,CREATEDBY ,TO_CHAR(CREATEDON,'DD-MM-YYYY HH24:MI:SS') ,MODIFIEDBY ,TO_CHAR(MODIFIEDON,'DD-MM-YYYY HH24:MI:SS') ,PAYMENT_TERMS ,VALUE_ADD ,STATUS FROM PRICEAPP2 WHERE PRICEID ='GCB1000000077' ORDER BY VENDORID
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:16
+MESSAGE           :: viewApproverDetailsStr  = SELECT SUPPORTEDBY_DIRECTOR1_STATUS,SUPPORTEDBY_DIRECTOR2_STATUS,APPROVER11_STATUS,APPROVER12_STATUS,APPROVER13_STATUS,APPROVER21_STATUS,APPROVER22_STATUS,APPROVER23_STATUS,APPROVER31_STATUS,APPROVER32_STATUS,APPROVER33_STATUS,APPROVER4_STATUS,APPROVER5_STATUS,APPROVER6_STATUS,TO_CHAR(SUPPORTEDBY_DIRECTOR1_DATE,'DD-MM-YYYY HH24:MI:SS'),TO_CHAR(SUPPORTEDBY_DIRECTOR2_DATE,'DD-MM-YYYY HH24:MI:SS'),TO_CHAR(APPROVER11_DATE,'DD-MM-YYYY HH24:MI:SS'),TO_CHAR(APPROVER12_DATE,'DD-MM-YYYY HH24:MI:SS'),TO_CHAR(APPROVER13_DATE,'DD-MM-YYYY HH24:MI:SS'),TO_CHAR(APPROVER21_DATE,'DD-MM-YYYY HH24:MI:SS'),TO_CHAR(APPROVER22_DATE,'DD-MM-YYYY HH24:MI:SS'),TO_CHAR(APPROVER23_DATE,'DD-MM-YYYY HH24:MI:SS'),TO_CHAR(APPROVER31_DATE,'DD-MM-YYYY HH24:MI:SS'),TO_CHAR(APPROVER32_DATE,'DD-MM-YYYY HH24:MI:SS'),TO_CHAR(APPROVER33_DATE,'DD-MM-YYYY HH24:MI:SS'),TO_CHAR(APPROVER4_DATE,'DD-MM-YYYY HH24:MI:SS'),TO_CHAR(APPROVER5_DATE,'DD-MM-YYYY HH24:MI:SS'),TO_CHAR(APPROVER6_DATE,'DD-MM-YYYY HH24:MI:SS'),APPROVER34_STATUS,APPROVER7_STATUS,TO_CHAR(APPROVER34_DATE,'DD-MM-YYYY HH24:MI:SS'),TO_CHAR(APPROVER7_DATE,'DD-MM-YYYY HH24:MI:SS'),APPROVER8_STATUS,TO_CHAR(APPROVER8_DATE,'DD-MM-YYYY HH24:MI:SS'),APPROVER35_STATUS,TO_CHAR(APPROVER35_DATE,'DD-MM-YYYY HH24:MI:SS'),APPROVER36_STATUS,TO_CHAR(APPROVER36_DATE,'DD-MM-YYYY HH24:MI:SS')  FROM PRICEAPP4  WHERE PRICEID ='GCB1000000077'
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:16
+MESSAGE           :: remarksStrNew  =  SELECT 		A.PRICEID, A.USERID, B.FIRSTNAME || '  ' || B.LASTNAME AS APPROVERNAME, A.REMARKS, 		TO_CHAR(A.MODIFIEDON,'DD-MM-YYYY HH24:MI:SS') AS MODIFIEDON, A.SPLRVFLAG, 		C.FIRSTNAME || '  ' || C.LASTNAME AS MODIFIEDBY,  A.APPROVERTYPE, B.EMAILID AS APPROVEREMAILID 	FROM 		PRICEAPP5 A, TIMESGROUPEMPLOYEE B, TIMESGROUPEMPLOYEE C 	WHERE  A.PRICEID  = 'GCB1000000077'  AND B.TIMESCAPEUSEROID = A.USERID  AND C.TIMESCAPEUSEROID = A.MODIFIEDBY 	ORDER BY A.MODIFIEDON DESC 
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:16
+MESSAGE           :: getAdminLst  =  SELECT  A.TIMESCAPEUSEROID , A.EMAILID , (SELECT B.FIRSTNAME || '  ' || B.LASTNAME FROM TIMESGROUPEMPLOYEE B WHERE B.TIMESCAPEUSEROID = A.TIMESCAPEUSEROID) FROM PRICEAPPADMINROLE A WHERE A.STATUS  ='A' 
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:16
+MESSAGE           :: remarksStr  =  SELECT  A.PRICEID , A.USERID , (SELECT B.FIRSTNAME || '  ' || B.LASTNAME FROM TIMESGROUPEMPLOYEE B WHERE B.TIMESCAPEUSEROID = A.USERID), A.REMARKS , TO_CHAR(A.CREATEDON,'DD-MM-YYYY HH24:MI:SS')  FROM PRICEAPP5 A WHERE A.USERID = 0 AND A.PRICEID ='GCB1000000077' AND A.APPROVERTYPE = 'SD1'
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:16
+MESSAGE           :: remarksStr  =  SELECT  A.PRICEID , A.USERID , (SELECT B.FIRSTNAME || '  ' || B.LASTNAME FROM TIMESGROUPEMPLOYEE B WHERE B.TIMESCAPEUSEROID = A.USERID), A.REMARKS , TO_CHAR(A.CREATEDON,'DD-MM-YYYY HH24:MI:SS')  FROM PRICEAPP5 A WHERE A.USERID = 0 AND A.PRICEID ='GCB1000000077' AND A.APPROVERTYPE = 'SD2'
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:16
+MESSAGE           :: remarksStr  =  SELECT  A.PRICEID , A.USERID , (SELECT B.FIRSTNAME || '  ' || B.LASTNAME FROM TIMESGROUPEMPLOYEE B WHERE B.TIMESCAPEUSEROID = A.USERID), A.REMARKS , TO_CHAR(A.CREATEDON,'DD-MM-YYYY HH24:MI:SS')  FROM PRICEAPP5 A WHERE A.USERID = 0 AND A.PRICEID ='GCB1000000077' AND A.APPROVERTYPE = 'AP11'
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:16
+MESSAGE           :: remarksStr  =  SELECT  A.PRICEID , A.USERID , (SELECT B.FIRSTNAME || '  ' || B.LASTNAME FROM TIMESGROUPEMPLOYEE B WHERE B.TIMESCAPEUSEROID = A.USERID), A.REMARKS , TO_CHAR(A.CREATEDON,'DD-MM-YYYY HH24:MI:SS')  FROM PRICEAPP5 A WHERE A.USERID = 0 AND A.PRICEID ='GCB1000000077' AND A.APPROVERTYPE = 'AP12'
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:16
+MESSAGE           :: remarksStr  =  SELECT  A.PRICEID , A.USERID , (SELECT B.FIRSTNAME || '  ' || B.LASTNAME FROM TIMESGROUPEMPLOYEE B WHERE B.TIMESCAPEUSEROID = A.USERID), A.REMARKS , TO_CHAR(A.CREATEDON,'DD-MM-YYYY HH24:MI:SS')  FROM PRICEAPP5 A WHERE A.USERID = 0 AND A.PRICEID ='GCB1000000077' AND A.APPROVERTYPE = 'AP13'
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:16
+MESSAGE           :: remarksStr  =  SELECT  A.PRICEID , A.USERID , (SELECT B.FIRSTNAME || '  ' || B.LASTNAME FROM TIMESGROUPEMPLOYEE B WHERE B.TIMESCAPEUSEROID = A.USERID), A.REMARKS , TO_CHAR(A.CREATEDON,'DD-MM-YYYY HH24:MI:SS')  FROM PRICEAPP5 A WHERE A.USERID = 0 AND A.PRICEID ='GCB1000000077' AND A.APPROVERTYPE = 'AP21'
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:16
+MESSAGE           :: remarksStr  =  SELECT  A.PRICEID , A.USERID , (SELECT B.FIRSTNAME || '  ' || B.LASTNAME FROM TIMESGROUPEMPLOYEE B WHERE B.TIMESCAPEUSEROID = A.USERID), A.REMARKS , TO_CHAR(A.CREATEDON,'DD-MM-YYYY HH24:MI:SS')  FROM PRICEAPP5 A WHERE A.USERID = 0 AND A.PRICEID ='GCB1000000077' AND A.APPROVERTYPE = 'AP22'
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:16
+MESSAGE           :: remarksStr  =  SELECT  A.PRICEID , A.USERID , (SELECT B.FIRSTNAME || '  ' || B.LASTNAME FROM TIMESGROUPEMPLOYEE B WHERE B.TIMESCAPEUSEROID = A.USERID), A.REMARKS , TO_CHAR(A.CREATEDON,'DD-MM-YYYY HH24:MI:SS')  FROM PRICEAPP5 A WHERE A.USERID = 0 AND A.PRICEID ='GCB1000000077' AND A.APPROVERTYPE = 'AP23'
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:16
+MESSAGE           :: remarksStr  =  SELECT  A.PRICEID , A.USERID , (SELECT B.FIRSTNAME || '  ' || B.LASTNAME FROM TIMESGROUPEMPLOYEE B WHERE B.TIMESCAPEUSEROID = A.USERID), A.REMARKS , TO_CHAR(A.CREATEDON,'DD-MM-YYYY HH24:MI:SS')  FROM PRICEAPP5 A WHERE A.USERID = 28163 AND A.PRICEID ='GCB1000000077' AND A.APPROVERTYPE = 'AP31'
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:16
+MESSAGE           :: remarksStr  =  SELECT  A.PRICEID , A.USERID , (SELECT B.FIRSTNAME || '  ' || B.LASTNAME FROM TIMESGROUPEMPLOYEE B WHERE B.TIMESCAPEUSEROID = A.USERID), A.REMARKS , TO_CHAR(A.CREATEDON,'DD-MM-YYYY HH24:MI:SS')  FROM PRICEAPP5 A WHERE A.USERID = 28163 AND A.PRICEID ='GCB1000000077' AND A.APPROVERTYPE = 'AP32'
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:16
+MESSAGE           :: remarksStr  =  SELECT  A.PRICEID , A.USERID , (SELECT B.FIRSTNAME || '  ' || B.LASTNAME FROM TIMESGROUPEMPLOYEE B WHERE B.TIMESCAPEUSEROID = A.USERID), A.REMARKS , TO_CHAR(A.CREATEDON,'DD-MM-YYYY HH24:MI:SS')  FROM PRICEAPP5 A WHERE A.USERID = 28163 AND A.PRICEID ='GCB1000000077' AND A.APPROVERTYPE = 'AP33'
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:16
+MESSAGE           :: remarksStr  =  SELECT  A.PRICEID , A.USERID , (SELECT B.FIRSTNAME || '  ' || B.LASTNAME FROM TIMESGROUPEMPLOYEE B WHERE B.TIMESCAPEUSEROID = A.USERID), A.REMARKS , TO_CHAR(A.CREATEDON,'DD-MM-YYYY HH24:MI:SS')  FROM PRICEAPP5 A WHERE A.USERID = 0 AND A.PRICEID ='GCB1000000077' AND A.APPROVERTYPE = 'AP34'
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:16
+MESSAGE           :: remarksStr  =  SELECT  A.PRICEID , A.USERID , (SELECT B.FIRSTNAME || '  ' || B.LASTNAME FROM TIMESGROUPEMPLOYEE B WHERE B.TIMESCAPEUSEROID = A.USERID), A.REMARKS , TO_CHAR(A.CREATEDON,'DD-MM-YYYY HH24:MI:SS')  FROM PRICEAPP5 A WHERE A.USERID = 0 AND A.PRICEID ='GCB1000000077' AND A.APPROVERTYPE = 'AP35'
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:16
+MESSAGE           :: remarksStr  =  SELECT  A.PRICEID , A.USERID , (SELECT B.FIRSTNAME || '  ' || B.LASTNAME FROM TIMESGROUPEMPLOYEE B WHERE B.TIMESCAPEUSEROID = A.USERID), A.REMARKS , TO_CHAR(A.CREATEDON,'DD-MM-YYYY HH24:MI:SS')  FROM PRICEAPP5 A WHERE A.USERID = 0 AND A.PRICEID ='GCB1000000077' AND A.APPROVERTYPE = 'AP36'
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:16
+MESSAGE           :: remarksStr  =  SELECT  A.PRICEID , A.USERID , (SELECT B.FIRSTNAME || '  ' || B.LASTNAME FROM TIMESGROUPEMPLOYEE B WHERE B.TIMESCAPEUSEROID = A.USERID), A.REMARKS , TO_CHAR(A.CREATEDON,'DD-MM-YYYY HH24:MI:SS')  FROM PRICEAPP5 A WHERE A.USERID = 0 AND A.PRICEID ='GCB1000000077' AND A.APPROVERTYPE = 'AP4'
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:16
+MESSAGE           :: remarksStr  =  SELECT  A.PRICEID , A.USERID , (SELECT B.FIRSTNAME || '  ' || B.LASTNAME FROM TIMESGROUPEMPLOYEE B WHERE B.TIMESCAPEUSEROID = A.USERID), A.REMARKS , TO_CHAR(A.CREATEDON,'DD-MM-YYYY HH24:MI:SS')  FROM PRICEAPP5 A WHERE A.USERID = 0 AND A.PRICEID ='GCB1000000077' AND A.APPROVERTYPE = 'AP5'
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:16
+MESSAGE           :: remarksStr  =  SELECT  A.PRICEID , A.USERID , (SELECT B.FIRSTNAME || '  ' || B.LASTNAME FROM TIMESGROUPEMPLOYEE B WHERE B.TIMESCAPEUSEROID = A.USERID), A.REMARKS , TO_CHAR(A.CREATEDON,'DD-MM-YYYY HH24:MI:SS')  FROM PRICEAPP5 A WHERE A.USERID = 0 AND A.PRICEID ='GCB1000000077' AND A.APPROVERTYPE = 'AP6'
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:16
+MESSAGE           :: remarksStr  =  SELECT  A.PRICEID , A.USERID , (SELECT B.FIRSTNAME || '  ' || B.LASTNAME FROM TIMESGROUPEMPLOYEE B WHERE B.TIMESCAPEUSEROID = A.USERID), A.REMARKS , TO_CHAR(A.CREATEDON,'DD-MM-YYYY HH24:MI:SS')  FROM PRICEAPP5 A WHERE A.USERID = 0 AND A.PRICEID ='GCB1000000077' AND A.APPROVERTYPE = 'AP7'
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:16
+MESSAGE           :: remarksStr  =  SELECT  A.PRICEID , A.USERID , (SELECT B.FIRSTNAME || '  ' || B.LASTNAME FROM TIMESGROUPEMPLOYEE B WHERE B.TIMESCAPEUSEROID = A.USERID), A.REMARKS , TO_CHAR(A.CREATEDON,'DD-MM-YYYY HH24:MI:SS')  FROM PRICEAPP5 A WHERE A.USERID = 0 AND A.PRICEID ='GCB1000000077' AND A.APPROVERTYPE = 'AP7'
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:38
+MESSAGE           :: SQLUtility.java: executeUpdate(): query : INSERT INTO PRICEAPP5 (PRICEID, USERID, REMARKS, APPROVERTYPE, CREATEDBY, MODIFIEDBY)VALUES('GCB1000000077',28163,'test33','AP33',28163,28163)
+
+________________________________________________________________________________________________________________________________
+
+TIME              :: 16:3:38
+MESSAGE           :: SQLUtility.java: executeUpdate(): updateCount : 1
+
+
+>>>After changing .java for build place below path in putty terminal
+
+1)for build priceApprovalWebController.java
+
+/usr/local/timescape/projects/timescape/dev/src/webapp
+ant
+
+2)for build PriceApprovalController.java
+
+/usr/local/timescape/projects/timescape/dev/src/priceapproval
+ant

@@ -1,0 +1,429 @@
+Til>>>>1003
+Paytm>>>replace to sodexo
+1042 ,1007,1021,1009,1034,1000>>> same(Paytm)
+
+<% if((mealvoucherController.queryVPFDetails(sapId)).size() == 0 && (companyCode.equals("1000") || companyCode.equals("1007") || companyCode.equals("1009") || companyCode.equals("1021") || companyCode.equals("1034") || companyCode.equals("1042"))) { %>
+								 <input type="checkbox" name="chkKYC" id="chkKYC"  onclick="goFurther()">I hereby confirm that I have Installed Paytm on my phone AND my full KYC has been completed.<br> 
+								<% } %>
+								<% else if((mealvoucherController.queryVPFDetails(sapId)).size() == 0 && (companyCode.equals("1003") || companyCode.equals("1048") || companyCode.equals("1051") || companyCode.equals("1043") || companyCode.equals("1030") || companyCode.equals("1031") || companyCode.equals("1050") || companyCode.equals("1046") || companyCode.equals("1047") || companyCode.equals("1041") || companyCode.equals("1040") || companyCode.equals("1004") || companyCode.equals("1036"))){ %>
+								<input type="checkbox" name="chkKYC" id="chkKYC"  onclick="goFurther()">I hereby confirm that I have my full KYC has been completed.<br>   
+					            <% } %>
+
+
+
+if(document.priceApprovalMain.app9.value==0 && document.priceApprovalMain.app10.value==0)
+	{
+			//alert("nnnn");
+		document.priceApprovalMain.app9.focus();
+		error += "Please select either Finance 1 or Finance 2 \n";
+	}
+
+	/*if(document.priceApprovalMain.app10.value==0)
+	{
+		//alert("hh");
+		document.priceApprovalMain.app10.focus();
+		error += "Please select Finance 2 \n";
+	}*/
+
+
+ap 33 ,34 and 4
+
+1>>>>> for every java file below imports have to include
+
+import java.util.Properties;
+import java.io.FileReader;
+import java.io.FileWriter;
+
+2>>>>>> to comment this db connections in every source file
+
+// private String DB_URL = "jdbc:oracle:thin:@10.100.229.126:1521:pkn";
+	//* private String DB_URL = "jdbc:oracle:thin:@10.200.105.195:1521:timesrmd";
+
+	//private String DB_USERNAME = "timescapeweb";
+	//private String DB_PASSWORD = "dalradco";
+	//private String DB_URL = "jdbc:oracle:thin:@10.200.120.140:1527:pkn";
+
+3>>>>>> to include this two methods in every source file
+
+/**
+	 * @Method Name : connectToDB
+	 * @Arguments : Nil
+	 * @Returns : boolean - status <b>Comments</b> : This method connects to the
+	 *          database
+	 */
+	public boolean connectToDb() throws Exception {
+		
+			try {
+				FileReader dbFr = new FileReader(
+						"/usr/local/timescape/programs/tomcat9.0.30/webapps/timescape_root/dbConnection/DBConfig.properties");
+						Properties dbProperties = new Properties();
+					dbProperties.load(dbFr);
+				Class.forName(DB_DRIVER_CLASS);
+				System.out.println("Running in ::: " + dbProperties.getProperty("Profile") + " Profile");
+				dbCon = DriverManager.getConnection(dbProperties.getProperty("DB_URL"),
+						dbProperties.getProperty("DB_USERNAME"), dbProperties.getProperty("DB_PASSWORD"));
+
+				System.out.println("DB URL::: " + dbProperties.getProperty("DB_URL") + " DB UserName ::: "
+						+ dbProperties.getProperty("DB_USERNAME"));
+						dbCon.setAutoCommit(false);
+				return true;
+			} catch (Exception e) {
+				exceptionMessage = "Exception in LeaveExceptions - connectToDB() : " + e;
+				writeLog(exceptionMessage, 2);
+				return false;
+			}
+	}
+
+
+	public boolean connectToDb_new() throws Exception {
+		
+			try {
+				FileReader dbFr = new FileReader(
+						"/usr/local/timescape/programs/tomcat9.0.30/webapps/timescape_root/dbConnection/DBConfig.properties");
+						Properties dbProperties = new Properties();
+					dbProperties.load(dbFr);
+				Class.forName(DB_DRIVER_CLASS);
+				System.out.println("Running in ::: " + dbProperties.getProperty("DB_PROFILE") + " Profile");
+				dbCon = DriverManager.getConnection(dbProperties.getProperty("DB_URL"),
+						dbProperties.getProperty("DB_USERNAME"), dbProperties.getProperty("DB_PASSWORD"));
+
+				System.out.println("DB URL::: " + dbProperties.getProperty("DB_URL") + " DB UserName ::: "
+						+ dbProperties.getProperty("DB_USERNAME"));
+						dbCon.setAutoCommit(false);
+				return true;
+			} catch (Exception e) {
+				exceptionMessage = "Exception in LeaveExceptions - connectToDB_new() : " + e;
+				writeLog(exceptionMessage, 2);
+				return false;
+			}
+	}
+
+for example where you have done above task then do below following steps to compile
+
+cd /usr/local/timescape/programs/schedules/updatevendordata
+
+./BCCLPartnerDXPortalOneTimeMailMMCL.sh
+
+*********************************************************  10.200.120.235 >> Issues***********************************************
+not changed
+AuditTrackerEmail>>SendEmailOta
+
+businessCard>>>DB connection not present
+
+dmtntimescape6p:/usr/local/timescape/programs/schedules/dtrsync # ./DTREmpReminder.sh
+-bash: ./DTREmpReminder.sh: Permission denied
+every files contain 2 DB mysql & oracle didn't changed
+
+dmtntimescape6p:/usr/local/timescape/programs/schedules/dtrsync # ./DTR_CityWise_Report.sh
+-bash: ./DTR_CityWise_Report.sh: Permission denied
+
+
+/usr/local/timescape/programs/schedules/ERVMAutoMailer
+FileUploadSchedular.java this file contain FileUploadSchedular.sh different javac source file
+
+/usr/local/timescape/programs/schedules/FieldAllowance
+GetFieldDataFromAPI.sh, GetFieldDataToSAP.sh not changed due to compilation error
+
+FireExtinguisherExpiryCheckAlert.java:125: error: incompatible types: boolean cannot be converted to Connection
+                        dbCon=connectToDb();
+						
+
+dmtntimescape6p:/usr/local/timescape/programs/schedules/investmentAutoProcessActuals---old--13022019 # ./InvestmentAutoProcess.sh
+-bash: ./InvestmentAutoProcess.sh: Permission denied
+
+
+/usr/local/timescape/programs/schedules/SimulationProcess_New
+didn't changed
+
+/usr/local/timescape/programs/schedules/tilPunchDataReport
+didn't changed
+
+/usr/local/timescape/programs/schedules/uploadSimulationData
+didn't changed
+
+
+*********************************************************  10.200.120.236 >> Issues***********************************************
+
+/usr/local/timescape/programs/schedules/covidTrackerReminder
+sh contain different javac .class 
+
+dmtntimescape7p:/usr/local/timescape/programs/schedules/DFWReportAutoMail # ./DFWReportAutoMail.bat
+-bash: ./DFWReportAutoMail.bat: Permission denied
+
+dmtntimescape7p:/usr/local/timescape/programs/schedules/disclosureProcessMailers # ./DisclosureAdmin.sh
+DisclosureAdmin.java:1: error: package javax.mail does not exist
+import javax.mail.*;
+
+dmtntimescape7p:/usr/local/timescape/programs/schedules/employeeaction # cd /usr/local/timescape/programs/schedules/enilKronosAutoLeaveProcess
+dmtntimescape7p:/usr/local/timescape/programs/schedules/enilKronosAutoLeaveProcess # ./LeaveAlert.sh
+LeaveAlert.java:17: error: package javax.mail does not exist
+import javax.mail.*;
+
+dmtntimescape7p:/usr/local/timescape/programs/schedules/enilLeaveAutoApproval # ./enilLeaveAutoApproval.sh
+
+dmtntimescape7p:/usr/local/timescape/programs/schedules/enilPoshReminder # ./enilPoshNewjoineeMail.sh
+
+/usr/local/timescape/programs/schedules/investmentAutoProcessActuals
+in this .sh file contain diff .java class file
+
+/usr/local/timescape/programs/schedules/investmentAutoProcessProposed
+here .sh is not present its source file present in above path also
+
+
+dmtntimescape7p:/usr/local/timescape/programs/schedules/productionstar # ./alertRockstar.sh
+-bash: ./alertRockstar.sh: Permission denied
+
+
+else if(appType.equals("AP33")){
+	  if(statusType.equals("A")){		
+		 if(!AP34.equals("0")){
+            sendMailto= AP34;
+			approvers = priceApprovalWebController.getApprovers(priceid,sendMailto);
+			mailStatus1 =  priceApprovalWebController.sendIndividualMail(createdBy[0],htmlStrForCreater,priceid);
+         }else{
+            if(AP4.equals("0") && AP34.equals("0")){
+                status2	= priceApprovalWebController.updateStatus("CL",priceid);
+				mailStatus1 =  priceApprovalWebController.sendIndividualMail(createdBy[0],htmlStrForCreater,priceid); // added by Shreedhar on 28-JAN-2020.
+            }else{
+                sendMailto= AP4;
+                approvers = priceApprovalWebController.getApprovers(priceid,sendMailto);
+				mailStatus1 =  priceApprovalWebController.sendIndividualMail(createdBy[0],htmlStrForCreater,priceid);
+            }
+		 }
+	  }else if (statusType.equals("H")||statusType.equals("R")){
+		approvers = priceApprovalWebController.getApprovers(priceid,CREATEDBY);		
+	  }
+
+	}else if(appType.equals("AP34")){
+	    if(statusType.equals("A")){			
+            if(AP5.equals("0")){
+                status2	= priceApprovalWebController.updateStatus("CL",priceid);
+				mailStatus1 =  priceApprovalWebController.sendIndividualMail(createdBy[0],htmlStrForCreater,priceid); // added by Shreedhar on 28-JAN-2020.
+            }else if(!AP5.equals("0")) {
+				sendMailto= AP5;
+				approvers = priceApprovalWebController.getApprovers(priceid,sendMailto);
+				mailStatus1 =  priceApprovalWebController.sendIndividualMail(createdBy[0],htmlStrForCreater,priceid);
+			}else{
+                sendMailto= AP4;
+                approvers = priceApprovalWebController.getApprovers(priceid,sendMailto);
+				mailStatus1 =  priceApprovalWebController.sendIndividualMail(createdBy[0],htmlStrForCreater,priceid);
+            }
+            
+	    }else if (statusType.equals("H")||statusType.equals("R")){		
+		    approvers = priceApprovalWebController.getApprovers(priceid,CREATEDBY);		
+	    }
+
+	}
+	
+	
+	
+	
+else if (appType.equals("AP33")) {
+    if (statusType.equals("A")) {        
+        if (!AP34.equals("0")) {
+            sendMailto = AP34;
+            approvers = priceApprovalWebController.getApprovers(priceid, sendMailto);
+            mailStatus1 = priceApprovalWebController.sendIndividualMail(createdBy[0], htmlStrForCreater, priceid);
+        } else {
+            if (AP4.equals("0") && AP34.equals("0")) {
+                if (AP5.equals("0")) {
+                    status2 = priceApprovalWebController.updateStatus("CL", priceid);
+                } else {
+                    status2 = priceApprovalWebController.updateStatus("L", priceid);
+                }
+                mailStatus1 = priceApprovalWebController.sendIndividualMail(createdBy[0], htmlStrForCreater, priceid); // added by Shreedhar on 28-JAN-2020.
+            } else {
+                sendMailto = AP4;
+                approvers = priceApprovalWebController.getApprovers(priceid, sendMailto);
+                mailStatus1 = priceApprovalWebController.sendIndividualMail(createdBy[0], htmlStrForCreater, priceid);
+            }
+        }
+    } else if (statusType.equals("H") || statusType.equals("R")) {
+        approvers = priceApprovalWebController.getApprovers(priceid, CREATEDBY);
+    }
+} else if (appType.equals("AP34")) {
+    if (statusType.equals("A")) {
+        if (AP4.equals("0")) {
+            if (AP5.equals("0")) {
+                status2 = priceApprovalWebController.updateStatus("CL", priceid);
+            } else {
+                status2 = priceApprovalWebController.updateStatus("L", priceid);
+            }
+            mailStatus1 = priceApprovalWebController.sendIndividualMail(createdBy[0], htmlStrForCreater, priceid); // added by Shreedhar on 28-JAN-2020.
+        } else {
+            sendMailto = AP4;
+            approvers = priceApprovalWebController.getApprovers(priceid, sendMailto);
+            mailStatus1 = priceApprovalWebController.sendIndividualMail(createdBy[0], htmlStrForCreater, priceid);
+        }
+
+    } else if (statusType.equals("H") || statusType.equals("R")) {
+        approvers = priceApprovalWebController.getApprovers(priceid, CREATEDBY);
+    }
+}
+	
+
+
+//initial code
+else if(appType.equals("AP33")){
+	  if(statusType.equals("A")){		
+		 if(!AP34.equals("0")){
+            sendMailto= AP34;
+			approvers = priceApprovalWebController.getApprovers(priceid,sendMailto);
+			mailStatus1 =  priceApprovalWebController.sendIndividualMail(createdBy[0],htmlStrForCreater,priceid);
+         }else{
+            if(AP4.equals("0") && AP34.equals("0")){
+                status2	= priceApprovalWebController.updateStatus("CL",priceid);
+				mailStatus1 =  priceApprovalWebController.sendIndividualMail(createdBy[0],htmlStrForCreater,priceid); // added by Shreedhar on 28-JAN-2020.
+            }else{
+                sendMailto= AP4;
+                approvers = priceApprovalWebController.getApprovers(priceid,sendMailto);
+				mailStatus1 =  priceApprovalWebController.sendIndividualMail(createdBy[0],htmlStrForCreater,priceid);
+            }
+		 }
+	  }else if (statusType.equals("H")||statusType.equals("R")){
+		approvers = priceApprovalWebController.getApprovers(priceid,CREATEDBY);		
+	  }
+
+	}else if(appType.equals("AP34")){
+	    if(statusType.equals("A")){			
+            if(AP4.equals("0")){
+                status2	= priceApprovalWebController.updateStatus("CL",priceid);
+				mailStatus1 =  priceApprovalWebController.sendIndividualMail(createdBy[0],htmlStrForCreater,priceid); // added by Shreedhar on 28-JAN-2020.
+            }else{
+                sendMailto= AP4;
+                approvers = priceApprovalWebController.getApprovers(priceid,sendMailto);
+				mailStatus1 =  priceApprovalWebController.sendIndividualMail(createdBy[0],htmlStrForCreater,priceid);
+            }
+            
+	    }else if (statusType.equals("H")||statusType.equals("R")){		
+		    approvers = priceApprovalWebController.getApprovers(priceid,CREATEDBY);		
+	    }
+
+	}	
+	
+	
+if(statusType.equals("L")){
+						updateStatus_AP4 = priceApprovalWebController.updateStatus_AP4("A", priceid);
+						status2 = priceApprovalWebController.updateStatus("L", priceid);
+					}else{
+						updateStatus_AP4 = priceApprovalWebController.updateStatus_AP4("L", priceid);
+						status2 = priceApprovalWebController.updateStatus("L", priceid);
+					}
+
+if (AP5.equals("0") && updateStatus_AP4.equals("A")) {
+    updateStatus_AP4 = "L";
+    priceApprovalWebController.updateStatus_AP4_Revert("L", priceid);
+}					
+	
+	
+if ((appType.equals("AP33") || appType.equals("AP34")) && statusType.equals("A")) {
+    if (!AP4.equals("0")) {
+        sendMailto = AP4;
+        approvers = priceApprovalWebController.getApprovers(priceid, sendMailto);
+    } else if (!AP34.equals("0")) {
+        sendMailto = AP34;
+        approvers = priceApprovalWebController.getApprovers(priceid, sendMailto);
+    } else if (AP5.equals("0")) {
+        status2 = priceApprovalWebController.updateStatus("L", priceid);
+        mailStatus1 = priceApprovalWebController.sendIndividualMail(createdBy[0], htmlStrForCreater, priceid);
+    } else {
+        updateStatus_AP4 = priceApprovalWebController.updateStatus_AP4("A", priceid);
+        status2 = priceApprovalWebController.updateStatus("L", priceid);
+        mailStatus1 = priceApprovalWebController.sendIndividualMail(createdBy[0], htmlStrForCreater, priceid);
+    }
+} else if (appType.equals("AP5") && statusType.equals("A")) {
+    if (AP5.equals("0")) {
+        status2 = priceApprovalWebController.updateStatus("L", priceid);
+        mailStatus1 = priceApprovalWebController.sendIndividualMail(createdBy[0], htmlStrForCreater, priceid);
+    } else {
+        status2 = priceApprovalWebController.updateStatus("CL", priceid);
+        updateStatus_AP4L = priceApprovalWebController.updateStatus_AP4("L", priceid); // Update AP4 status to "L"
+        mailStatus1 = priceApprovalWebController.sendIndividualMail(createdBy[0], htmlStrForCreater, priceid);
+    }
+} else if (statusType.equals("H") || statusType.equals("R")) {
+    approvers = priceApprovalWebController.getApprovers(priceid, CREATEDBY);
+}
+
+
+
+if (appType.equals("AP33")) {
+    if (statusType.equals("A")) {
+        if (!AP34.equals("0")) {
+            sendMailto = AP34;
+            approvers = priceApprovalWebController.getApprovers(priceid, sendMailto);
+            mailStatus1 = priceApprovalWebController.sendIndividualMail(createdBy[0], htmlStrForCreater, priceid);
+        } else {
+            if (AP4.equals("0") && AP34.equals("0")) {
+                if (AP5.equals("0")) {
+                    status2 = priceApprovalWebController.updateStatus("CL", priceid);
+                } else {
+                    updateStatus_AP4 = priceApprovalWebController.updateStatus_AP4("A", priceid);
+                    status2 = priceApprovalWebController.updateStatus("L", priceid);
+                }
+                mailStatus1 = priceApprovalWebController.sendIndividualMail(createdBy[0], htmlStrForCreater, priceid); // added by Shreedhar on 28-JAN-2020.
+            } else {
+                sendMailto = AP4;
+                approvers = priceApprovalWebController.getApprovers(priceid, sendMailto);
+                mailStatus1 = priceApprovalWebController.sendIndividualMail(createdBy[0], htmlStrForCreater, priceid);
+            }
+        }
+    } else if (statusType.equals("H") || statusType.equals("R")) {
+        approvers = priceApprovalWebController.getApprovers(priceid, CREATEDBY);
+    }
+} else if (appType.equals("AP34")) {
+    if (statusType.equals("A")) {
+        if (AP4.equals("0")) {
+            if (AP5.equals("0")) {
+                status2 = priceApprovalWebController.updateStatus("CL", priceid);
+            } else {
+                updateStatus_AP4 = priceApprovalWebController.updateStatus_AP4("A", priceid);
+                status2 = priceApprovalWebController.updateStatus("L", priceid);
+            }
+            mailStatus1 = priceApprovalWebController.sendIndividualMail(createdBy[0], htmlStrForCreater, priceid); // added by Shreedhar on 28-JAN-2020.
+        } else {
+            sendMailto = AP4;
+            approvers = priceApprovalWebController.getApprovers(priceid, sendMailto);
+            mailStatus1 = priceApprovalWebController.sendIndividualMail(createdBy[0], htmlStrForCreater, priceid);
+        }
+    } else if (statusType.equals("H") || statusType.equals("R")) {
+        approvers = priceApprovalWebController.getApprovers(priceid, CREATEDBY);
+    }
+} else if (appType.equals("AP5") && statusType.equals("A")) {
+    status2 = priceApprovalWebController.updateStatus("CL", priceid);
+    updateStatus_AP4A = priceApprovalWebController.updateStatus_AP4_Revert("L", priceid);
+}
+
+
+SELECT * FROM PRICEAPP1 WHERE priceid='GCB1000000075'-- priceapp3
+
+SELECT * FROM PRICEAPP4 WHERE priceid='GCB1000000067'
+
+UPDATE PRICEAPP4 SET approver34_status='L' WHERE priceid='GCB1000000075'
+
+UPDATE PRICEAPP1 SET approver33=0 WHERE priceid='GCB1000000075'
+
+UPDATE PRICEAPP3 SET status='UC' WHERE priceid='GCB1000000075'
+
+UPDATE PRICEAPP4 SET approver4_status = 'A', MODIFIEDON =SYSDATE WHERE priceid LIKE 'GCB1000000067'
+
+COMMIT
+
+SELECT * FROM tab
+
+SELECT   a.attendanceindicator, COUNT (a.attendanceindicator)
+    FROM tkcsowner.knxpayrollmonthly a
+   WHERE payrollperiod = '11'
+     AND payrollyear = '2023'
+     AND companycode = '1000'
+     AND createdby = 'NAVEENK3008'
+GROUP BY a.attendanceindicator
+ORDER BY 1
+
+SELECT   a.attendanceindicator, COUNT (a.attendanceindicator)
+    FROM tkcsowner.knxpayrollmonthly a
+   WHERE  companycode = '1000'
+     AND createdby = 'NAVEENK3008'
+GROUP BY a.attendanceindicator
+ORDER BY 1
+
+SELECT COUNT(*) FROM tkcsowner.knxpayrollmonthly WHERE companycode='1000'
