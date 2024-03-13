@@ -69,119 +69,216 @@ int currentDate = cal.get(Calendar.DAY_OF_MONTH);
 int payrollPeriod = 1;
 int payrollYear = cal.get(Calendar.YEAR);
 
+int payrollPeriodN = 1;
+int payrollYearN = cal.get(Calendar.YEAR);
+
 switch (currentMonth) {
     case Calendar.APRIL:
-		if(currentDate>=1 && currentDate<=15){
-			payrollYear = cal.get(Calendar.YEAR);
-			payrollPeriod = 1;
-		} else if(currentDate>=16 && currentDate<=30){
-			payrollYear = cal.get(Calendar.YEAR);
-			payrollPeriod = 2;
-		}
+        if(currentDate >= 1 && currentDate <= 15){
+            payrollPeriod = 1;
+        } else if(currentDate >= 16 && currentDate <= 30){
+            payrollPeriod = 2;
+        }
         break;
     case Calendar.MAY:
-        if(currentDate>=1 && currentDate<=15){
-			payrollYear = cal.get(Calendar.YEAR);
-			payrollPeriod = 2;
-		} else if(currentDate>=16 && currentDate<=31){
-			payrollYear = cal.get(Calendar.YEAR);
-			payrollPeriod = 3;
-		}
+        if(currentDate >= 1 && currentDate <= 15){
+            payrollPeriod = 2;
+        } else if(currentDate >= 16 && currentDate <= 31){
+            payrollPeriod = 3;
+        }
         break;
     case Calendar.JUNE:
-        if(currentDate>=1 && currentDate<=15){
-			payrollYear = cal.get(Calendar.YEAR);
-			payrollPeriod = 3;
-		} else if(currentDate>=16 && currentDate<=30){
-			payrollYear = cal.get(Calendar.YEAR);
-			payrollPeriod = 4;
-		}
+        if(currentDate >= 1 && currentDate <= 15){
+            payrollPeriod = 3;
+        } else if(currentDate >= 16 && currentDate <= 30){
+            payrollPeriod = 4;
+        }
         break;
     case Calendar.JULY:
-        if(currentDate>=1 && currentDate<=15){
-			payrollYear = cal.get(Calendar.YEAR);
-			payrollPeriod = 4;
-		} else if(currentDate>=16 && currentDate<=31){
-			payrollYear = cal.get(Calendar.YEAR);
-			payrollPeriod = 5;
-		}
+        if(currentDate >= 1 && currentDate <= 15){
+            payrollPeriod = 4;
+        } else if(currentDate >= 16 && currentDate <= 31){
+            payrollPeriod = 5;
+        }
         break;
     case Calendar.AUGUST:
-        if(currentDate>=1 && currentDate<=15){
-			payrollYear = cal.get(Calendar.YEAR);
-			payrollPeriod = 5;
-		} else if(currentDate>=16 && currentDate<=31){
-			payrollYear = cal.get(Calendar.YEAR);
-			payrollPeriod = 6;
-		}
+        if(currentDate >= 1 && currentDate <= 15){
+            payrollPeriod = 5;
+        } else if(currentDate >= 16 && currentDate <= 31){
+            payrollPeriod = 6;
+        }
         break;
     case Calendar.SEPTEMBER:
-        if(currentDate>=1 && currentDate<=15){
-			payrollYear = cal.get(Calendar.YEAR);
-			payrollPeriod = 6;
-		} else if(currentDate>=16 && currentDate<=30){
-			payrollYear = cal.get(Calendar.YEAR);
-			payrollPeriod = 7;
-		}
+        if(currentDate >= 1 && currentDate <= 15){
+            payrollPeriod = 6;
+        } else if(currentDate >= 16 && currentDate <= 30){
+            payrollPeriod = 7;
+        }
         break;
     case Calendar.OCTOBER:
-        if(currentDate>=1 && currentDate<=15){
-			payrollYear = cal.get(Calendar.YEAR);
-			payrollPeriod = 7;
-		} else if(currentDate>=16 && currentDate<=31){
-			payrollYear = cal.get(Calendar.YEAR);
-			payrollPeriod = 8;
-		}
+        if(currentDate >= 1 && currentDate <= 15){
+            payrollPeriod = 7;
+        } else if(currentDate >= 16 && currentDate <= 31){
+            payrollPeriod = 8;
+        }
         break;
     case Calendar.NOVEMBER:
-        if(currentDate>=1 && currentDate<=15){
-			payrollYear = cal.get(Calendar.YEAR);
-			payrollPeriod = 8;
-		} else if(currentDate>=16 && currentDate<=30){
-			payrollYear = cal.get(Calendar.YEAR);
-			payrollPeriod = 9;
-		}
+        if(currentDate >= 1 && currentDate <= 15){
+            payrollPeriod = 8;
+        } else if(currentDate >= 16 && currentDate <= 30){
+            payrollPeriod = 9;
+        }
         break;
     case Calendar.DECEMBER:
-        if(currentDate>=1 && currentDate<=15){
-			payrollYear = cal.get(Calendar.YEAR);
-			payrollPeriod = 9;
-		} else if(currentDate>=16 && currentDate<=31){
-			payrollYear = cal.get(Calendar.YEAR);
-			payrollPeriod = 10;
-		}
+        if(currentDate >= 1 && currentDate <= 15){
+            payrollPeriod = 9;
+        } else if(currentDate >= 16 && currentDate <= 31){
+            payrollPeriod = 10;
+        }
         break;
-	case Calendar.JANUARY:
-        if(currentDate>=1 && currentDate<=15){
-			payrollYear = cal.get(Calendar.YEAR) - 1;
-			payrollPeriod = 10;
-		} else if(currentDate>=16 && currentDate<=31){
-			payrollYear = cal.get(Calendar.YEAR) - 1;
-			payrollPeriod = 11;
-		}
+    case Calendar.JANUARY:
+        if(currentDate >= 1 && currentDate <= 15){
+            payrollPeriod = 10;
+            payrollYear--;
+        } else if(currentDate >= 16 && currentDate <= 31){
+            payrollPeriod = 11;
+            payrollYear--;
+        }
         break;
     case Calendar.FEBRUARY:
-        if (currentDate >= 1 && currentDate<=15) {
-            payrollYear = cal.get(Calendar.YEAR) - 1;
+        if (currentDate >= 1 && currentDate <= 15) {
             payrollPeriod = 11;
+            payrollYear--;
         } else if(currentDate >= 16 && currentDate <= 29){
-            payrollYear = cal.get(Calendar.YEAR) - 1;
             payrollPeriod = 12;
+            payrollYear--;
         }
         break;
     case Calendar.MARCH:
         if (currentDate >= 1 && currentDate <= 15) {
-            payrollYear = cal.get(Calendar.YEAR) - 1;
-            payrollPeriod = 12;//11
-        } else if(currentDate>=16 && currentDate<=31){
-            payrollYear = cal.get(Calendar.YEAR);
+            payrollPeriod = 12;
+            payrollYear--;
+        } else if(currentDate >= 16 && currentDate <= 31){
             payrollPeriod = 1;
         }
         break;
     default:
-        payrollYear = cal.get(Calendar.YEAR);
         payrollPeriod = 0;
         break;
+}
+
+
+
+// Calculate the previous payroll period and year
+if (payrollPeriod == 1) {
+    payrollPeriod = 12;
+    payrollYear--;
+} else {
+    payrollPeriod--;
+}
+
+switch (currentMonth) {
+    case Calendar.APRIL:
+        if(currentDate >= 1 && currentDate <= 15){
+            payrollPeriodN = 1;
+        } else if(currentDate >= 16 && currentDate <= 30){
+            payrollPeriodN = 2;
+        }
+        break;
+    case Calendar.MAY:
+        if(currentDate >= 1 && currentDate <= 15){
+            payrollPeriodN = 2;
+        } else if(currentDate >= 16 && currentDate <= 31){
+            payrollPeriodN = 3;
+        }
+        break;
+    case Calendar.JUNE:
+        if(currentDate >= 1 && currentDate <= 15){
+            payrollPeriodN = 3;
+        } else if(currentDate >= 16 && currentDate <= 30){
+            payrollPeriodN = 4;
+        }
+        break;
+    case Calendar.JULY:
+        if(currentDate >= 1 && currentDate <= 15){
+            payrollPeriod = 4;
+        } else if(currentDate >= 16 && currentDate <= 31){
+            payrollPeriod = 5;
+        }
+        break;
+    case Calendar.AUGUST:
+        if(currentDate >= 1 && currentDate <= 15){
+            payrollPeriodN = 5;
+        } else if(currentDate >= 16 && currentDate <= 31){
+            payrollPeriodN = 6;
+        }
+        break;
+    case Calendar.SEPTEMBER:
+        if(currentDate >= 1 && currentDate <= 15){
+            payrollPeriodN = 6;
+        } else if(currentDate >= 16 && currentDate <= 30){
+            payrollPeriodN = 7;
+        }
+        break;
+    case Calendar.OCTOBER:
+        if(currentDate >= 1 && currentDate <= 15){
+            payrollPeriodN = 7;
+        } else if(currentDate >= 16 && currentDate <= 31){
+            payrollPeriodN = 8;
+        }
+        break;
+    case Calendar.NOVEMBER:
+        if(currentDate >= 1 && currentDate <= 15){
+            payrollPeriodN = 8;
+        } else if(currentDate >= 16 && currentDate <= 30){
+            payrollPeriodN = 9;
+        }
+        break;
+    case Calendar.DECEMBER:
+        if(currentDate >= 1 && currentDate <= 15){
+            payrollPeriodN = 9;
+        } else if(currentDate >= 16 && currentDate <= 31){
+            payrollPeriodN = 10;
+        }
+        break;
+    case Calendar.JANUARY:
+        if(currentDate >= 1 && currentDate <= 15){
+            payrollPeriodN = 10;
+            payrollYear--;
+        } else if(currentDate >= 16 && currentDate <= 31){
+            payrollPeriodN = 11;
+            payrollYearN--;
+        }
+        break;
+    case Calendar.FEBRUARY:
+        if (currentDate >= 1 && currentDate <= 15) {
+            payrollPeriodN = 11;
+            payrollYearN--;
+        } else if(currentDate >= 16 && currentDate <= 29){
+            payrollPeriodN = 12;
+            payrollYearN--;
+        }
+        break;
+    case Calendar.MARCH:
+        if (currentDate >= 1 && currentDate <= 15) {
+            payrollPeriodN = 12;
+            payrollYearN--;
+        } else if(currentDate >= 16 && currentDate <= 31){
+            payrollPeriodN = 1;
+        }
+        break;
+    default:
+        payrollPeriodN = 0;
+        break;
+}
+
+// Calculate the next payroll period and year
+if (payrollPeriod == 12) {
+    payrollPeriodN = 1;
+    payrollYearN = payrollYear + 1;
+} else {
+    payrollPeriodN = payrollPeriod + 1;
+    payrollYearN = payrollYear;
 }
 
 
@@ -193,69 +290,57 @@ ukgList = ukgNotificationController.calculateAttendanceIndicatorCount(payrollPer
 out.println("Payroll Period: " + payrollPeriodStr);
 out.println("Payroll Year: " + payrollYearStr);
 
+out.println("<br><br>");
+out.println("<table border='1' >");
+out.println("<tr><th>Attendance Indicator</th><th>COUNT (Attendance Indicator)</th></tr>");
 
 // Iterate over the ukgList and print each value
-
 for (Object obj : ukgList) {
     if (obj instanceof String[]) {
         String[] array = (String[]) obj;
-        StringBuilder stringBuilder = new StringBuilder("Value from ukgList: [");
+        out.println("<tr>");
         for (String element : array) {
-            stringBuilder.append(element).append(", ");
+            out.println("<td>" + element + "</td>");
         }
-        stringBuilder.setLength(stringBuilder.length() - 2);
-        stringBuilder.append("]");
-        out.println(stringBuilder.toString());
-    } else {
-        out.println("Value from ukgList: " + obj.toString());
+        out.println("</tr>");
     }
 }
+
+out.println("</table>");
+
+
+
+String payrollPeriodStrN = String.valueOf(payrollPeriodN);
+String payrollYearStrN = String.valueOf(payrollYearN);
+
+ArrayList ukgListN = new ArrayList();
+ukgListN = ukgNotificationController.calculateAttendanceIndicatorCount(payrollPeriodStrN, payrollYearStrN, "1000", "NAVEENK3008");
+out.println("Payroll Period: " + payrollPeriodStrN);
+out.println("Payroll Year: " + payrollYearStrN);
+
+out.println("<br><br>");
+out.println("<table border='1' >");
+out.println("<tr><th>Attendance Indicator</th><th>COUNT (Attendance Indicator)</th></tr>");
+
+// Iterate over the ukgList and print each value
+for (Object obj : ukgListN) {
+    if (obj instanceof String[]) {
+        String[] array = (String[]) obj;
+        out.println("<tr>");
+        for (String element : array) {
+            out.println("<td>" + element + "</td>");
+        }
+        out.println("</tr>");
+    }
+}
+
+out.println("</table>");
+
+
 
 %>
 </form>
  </body>
-</html>
-
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Create Asset Request</title>
-<link href="../style/global.css" rel="stylesheet" type="text/css" />
-<link href="../style/calendarControl.css" rel="stylesheet">
-<script src="../jscripts/calendarControl.js" language="javascript"></script>
-<script src="../jscripts/common.js" language="javascript"></script>
-<script src="../jscripts/util.js" language="javascript"></script>
-<script src="../jscripts/jquery.js" language="javascript"></script>
-<script src="../jscripts/addRows.js" language="javascript"></script>
-<script src="../jscripts/createRequest.js" language="javascript"></script>
-<style type="text/css">
-body {
-    margin-left: 0px;
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    background-image: url('../images/header_BG.jpg');
-    background-repeat: repeat-x;
-}
-</style>
-</head>
-<body>
-<form name="frmCreateRequest" method="post">
-<%//@ include file="../includes/relatedLinks.jsp" %>
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
-    <tr>
-        <td colspan="100%" height="20px" bgcolor="#E7EAEF" class="budgetMenuBG">&nbsp;&nbsp;OUTWARD ASSET</td>
-    </tr>
-</table>
-<%
-ArrayList ukgList = new ArrayList();
-ukgList = ukgNotificationController.calculateAttendanceIndicatorCount(Integer.toString(payrollPeriod), Integer.toString(payrollYear), "1000", "NAVEENK3008");
-out.println(ukgList.size());
-%>
-</form>
-</body>
 </html>
 
 
