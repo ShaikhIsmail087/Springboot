@@ -1,3 +1,7 @@
+>>>/usr/local/timescape/programs/tomcat9.0.30/webapps/timescape/WEB-INF/lib>>>place jar file that is ukgnotification.jar
+
+>>>>/usr/local/timescape/programs/tomcat9.0.30/webapps/timescape/WEB-INF/classes/com/bccl/ukgnotification/web/controllerbeans>>>place ukgnotificationWebController.class
+
 >>/usr/local/timescape/programs/tomcat9.0.30/webapps/timescape/WEB-INF/classes/config>>>>write ukgnotification(application name)
 >>make ukgnotificationlogs >>>/var/timescapelogs/ukgnotificationlogs
 
@@ -9,7 +13,7 @@ viewData.jsp>>>
 <%@ include file="../includes/sessionCheck.jsp" %>
 <%@ page errorPage="../common/errorPage.jsp"%>
 <%@ include file="../includes/empHeader.jsp" %>
-<%@ page import="java.util.Hashtable, java.util.ArrayList, java.util.GregorianCalendar, java.util.Calendar" %>
+<%@ page import="java.util.Hashtable, java.util.ArrayList, java.util.GregorianCalendar, java.util.Calendar, java.text.SimpleDateFormat, java.util.Date, java.text.DateFormatSymbols" %>
 <jsp:useBean id="ukgNotificationController" class="com.bccl.ukgnotification.web.controllerbeans.ukgnotificationWebController"/>
 <jsp:useBean id="listDomainObjectsController" class="com.bccl.enterprise.web.controller.DomainObjectsWebController" />
 
@@ -155,10 +159,10 @@ switch (currentMonth) {
         }
         break;
     case Calendar.MARCH:
-        if (currentDate >= 1 && currentDate <= 15) {
-            payrollPeriod = 12;
+        if (currentDate >= 1 && currentDate <= 19) {
+            payrollPeriod = 11;
             payrollYear--;
-        } else if(currentDate >= 16 && currentDate <= 31){
+        } else if(currentDate >= 20 && currentDate <= 31){
             payrollPeriod = 1;
         }
         break;
@@ -166,7 +170,6 @@ switch (currentMonth) {
         payrollPeriod = 0;
         break;
 }
-
 
 
 // Calculate the previous payroll period and year
@@ -192,10 +195,28 @@ String payrollYearStr = String.valueOf(payrollYear);
 
 ArrayList ukgList = new ArrayList();
 ukgList = ukgNotificationController.calculateAttendanceIndicatorCount(payrollPeriodStr, payrollYearStr, "1000", "NAVEENK3008");
+ArrayList ukgListCreatedOn = ukgNotificationController.calculateAttendanceIndicatorCountCreatedOn(payrollPeriodStr, payrollYearStr, "1000", "NAVEENK3008");
 out.println("Payroll Period: " + payrollPeriodStr);
 out.println("Payroll Year: " + payrollYearStr);
 
+// Calculate previous and next payroll dates
+String[] months = {"Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar"};
+String prevStartMonth = months[(payrollPeriod == 1) ? 11 : (payrollPeriod - 2)]; // Index adjustment
+String prevEndMonth = months[(payrollPeriod == 1) ? 0 : (payrollPeriod - 1)]; // Index adjustment
+String nextStartMonth = prevEndMonth; // Index adjustment
+String nextEndMonth = months[(payrollPeriodN - 1) % 12]; // Index adjustment
+
+int prevYear = (payrollPeriod == 1) ? payrollYear - 1 : payrollYear;
+int nextYear = (payrollPeriodN == 1) ? payrollYearN : payrollYearN ;
+
+out.println("Previous Payroll Start Date: 16-" + prevStartMonth + "-" + prevYear);
+out.println(" End Date: 15-" + prevEndMonth + "-" + payrollYear);
+
+
 out.println("<br><br>");
+
+out.println("<table>");
+out.println("<td>");
 out.println("<table border='1' >");
 out.println("<tr><th>Attendance Indicator</th><th>COUNT (Attendance Indicator)</th></tr>");
 
@@ -212,6 +233,45 @@ for (Object obj : ukgList) {
 }
 
 out.println("</table>");
+out.println("</td>");
+out.println("<td>");
+
+// Iterate over the ukgListCreatedOn and print each value
+for (Object obj : ukgListCreatedOn) {
+    if (obj instanceof String[]) {
+        String[] created = (String[]) obj;
+		for(String createdOn : created){
+			out.println(" >>> Created On :"+createdOn);
+		}
+    }
+}
+
+out.println("<table border='1' >");
+out.println("<tr><th>Attendance Indicator</th><th>COUNT (Attendance Indicator)</th></tr>");
+
+// Iterate over the ukgList and print each value
+for (Object obj : ukgList) {
+    if (obj instanceof String[]) {
+        String[] array = (String[]) obj;
+        out.println("<tr>");
+        for (String element : array) {
+            if (element.equals("DYR") || element.equals("LWP")) {
+                out.println("<tr>");
+                out.println("<td>" + element + "</td>");
+                
+                String count = array[1]; 
+                out.println("<td>" + count + "</td>");
+                out.println("</tr>");
+                break; 
+            }
+        }
+        out.println("</tr>");
+    }
+}
+
+out.println("</table>");
+out.println("</td>");
+out.println("</table>");
 
 
 
@@ -220,10 +280,19 @@ String payrollYearStrN = String.valueOf(payrollYearN);
 
 ArrayList ukgListN = new ArrayList();
 ukgListN = ukgNotificationController.calculateAttendanceIndicatorCount(payrollPeriodStrN, payrollYearStrN, "1000", "NAVEENK3008");
+ArrayList ukgListNCreatedOn = ukgNotificationController.calculateAttendanceIndicatorCountCreatedOn(payrollPeriodStrN, payrollYearStrN, "1000", "NAVEENK3008");
+out.println("<br>");
 out.println("Payroll Period: " + payrollPeriodStrN);
 out.println("Payroll Year: " + payrollYearStrN);
 
+// Print the details for the next payroll period
+out.println("Next Payroll Start Date: 16-" + nextStartMonth + "-" + payrollYear);
+out.println(" End Date: 15-" + nextEndMonth + "-" + nextYear);
+
+
 out.println("<br><br>");
+out.println("<table>");
+out.println("<td>");
 out.println("<table border='1' >");
 out.println("<tr><th>Attendance Indicator</th><th>COUNT (Attendance Indicator)</th></tr>");
 
@@ -240,13 +309,54 @@ for (Object obj : ukgListN) {
 }
 
 out.println("</table>");
+out.println("</td>");
+out.println("<td>");
 
+// Iterate over the ukgListNCreatedOn and print each value
+for (Object obj : ukgListNCreatedOn) {
+    if (obj instanceof String[]) {
+        String[] created = (String[]) obj;
+		for(String createdOn : created){
+			out.println(" >>> Created On :"+createdOn);
+		}
+    }
+}
+
+out.println("<table border='1' >");
+out.println("<tr><th>Attendance Indicator</th><th>COUNT (Attendance Indicator)</th></tr>");
+
+// Iterate over the ukgList and print each value
+for (Object obj : ukgListN) {
+    if (obj instanceof String[]) {
+        String[] array = (String[]) obj;
+        out.println("<tr>");
+        for (String element : array) {
+            if (element.equals("DYR") || element.equals("LWP")) {
+                out.println("<tr>");
+                out.println("<td>" + element + "</td>");
+                
+                String count = array[1]; 
+                out.println("<td>" + count + "</td>");
+                out.println("</tr>");
+                break; 
+            }
+        }
+        out.println("</tr>");
+    }
+}
+
+out.println("</table>");
+out.println("</td>");
+out.println("</table>");
 
 
 %>
+
+
 </form>
  </body>
 </html>
+
 
 
 
@@ -321,6 +431,30 @@ public class ukgnotification {
         
         return result;
     }
+	
+	public ArrayList calculateAttendanceIndicatorCountCreatedOn(String payrollPeriod,String payrollYear,String companyCode,String createdBy)throws Exception
+	{
+		String getCalculatedAttendanceIndicatorCountCreatedOn= "";
+		ArrayList result= null;
+        try {
+
+		getCalculatedAttendanceIndicatorCountCreatedOn = "SELECT DISTINCT TO_CHAR(createdon,'DD-MON-YYYY') " +
+                                                "FROM tkcsowner.knxpayrollmonthly a " +
+                                                "WHERE payrollperiod = '" + payrollPeriod + "' " +
+                                                "AND payrollyear = '" + payrollYear + "' " +
+                                                "AND companycode = '" + companyCode + "' " +
+                                                "AND createdby = '" + createdBy + "' " +
+                                                "ORDER BY 1";
+
+			result	= sqlUtility.executeQuery(getCalculatedAttendanceIndicatorCountCreatedOn,null);
+
+        } finally {
+            
+			Log.printLog(application, "getCalculatedAttendanceIndicatorCountCreatedOn = " +getCalculatedAttendanceIndicatorCountCreatedOn, 1);
+        }
+        
+        return result;
+    }
 
 
 	/**
@@ -387,6 +521,12 @@ public class ukgnotificationController {
         return result;
     }
 	
+	public ArrayList calculateAttendanceIndicatorCountCreatedOn(String payrollPeriod,String payrollYear,String companyCode,String createdBy)throws Exception{
+
+        ArrayList result= ukgnotificationObj.calculateAttendanceIndicatorCountCreatedOn(payrollPeriod,payrollYear,companyCode,createdBy);
+        
+        return result;
+    }
   
 	/**
 		@Method Name 	     : toString( )
@@ -445,7 +585,13 @@ public class ukgnotificationWebController implements java.io.Serializable {
         
         return result;
     }
+	
+	public ArrayList calculateAttendanceIndicatorCountCreatedOn(String payrollPeriod,String payrollYear,String companyCode,String createdBy)throws Exception{
 
+        ArrayList result= ukgNotificationControllerObj.calculateAttendanceIndicatorCountCreatedOn(payrollPeriod,payrollYear,companyCode,createdBy);
+        
+        return result;
+    }
 
    /**  
      * Used to print the String representation of this object.
@@ -529,3 +675,5 @@ package:
 
 BUILD SUCCESSFUL
 Total time: 5 seconds
+
+
