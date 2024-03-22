@@ -47,6 +47,13 @@ body {
 	background-image: url('../images/header_BG.jpg');
 	background-repeat: repeat-x;
 }
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+}
 </style>
 </head>
 
@@ -77,95 +84,97 @@ int payrollPeriodN = 1;
 int payrollYearN = cal.get(Calendar.YEAR);
 
 switch (currentMonth) {
-    case Calendar.APRIL:
-        if(currentDate >= 1 && currentDate <= 15){
-            payrollPeriod = 1;
-        } else if(currentDate >= 16 && currentDate <= 30){
-            payrollPeriod = 2;
-        }
-        break;
     case Calendar.MAY:
         if(currentDate >= 1 && currentDate <= 15){
-            payrollPeriod = 2;
+            payrollPeriod = 1;
         } else if(currentDate >= 16 && currentDate <= 31){
-            payrollPeriod = 3;
+            payrollPeriod = 2;
         }
         break;
     case Calendar.JUNE:
         if(currentDate >= 1 && currentDate <= 15){
-            payrollPeriod = 3;
+            payrollPeriod = 2;
         } else if(currentDate >= 16 && currentDate <= 30){
-            payrollPeriod = 4;
+            payrollPeriod = 3;
         }
         break;
     case Calendar.JULY:
         if(currentDate >= 1 && currentDate <= 15){
+            payrollPeriod = 3;
+        } else if(currentDate >= 16 && currentDate <= 31){
+            payrollPeriod = 4;
+        }
+        break;
+    case Calendar.AUGUST:
+        if(currentDate >= 1 && currentDate <= 15){
             payrollPeriod = 4;
         } else if(currentDate >= 16 && currentDate <= 31){
             payrollPeriod = 5;
         }
         break;
-    case Calendar.AUGUST:
-        if(currentDate >= 1 && currentDate <= 15){
-            payrollPeriod = 5;
-        } else if(currentDate >= 16 && currentDate <= 31){
-            payrollPeriod = 6;
-        }
-        break;
     case Calendar.SEPTEMBER:
         if(currentDate >= 1 && currentDate <= 15){
-            payrollPeriod = 6;
+            payrollPeriod = 5;
         } else if(currentDate >= 16 && currentDate <= 30){
-            payrollPeriod = 7;
+            payrollPeriod = 6;
         }
         break;
     case Calendar.OCTOBER:
         if(currentDate >= 1 && currentDate <= 15){
-            payrollPeriod = 7;
+            payrollPeriod = 6;
         } else if(currentDate >= 16 && currentDate <= 31){
-            payrollPeriod = 8;
+            payrollPeriod = 7;
         }
         break;
     case Calendar.NOVEMBER:
         if(currentDate >= 1 && currentDate <= 15){
-            payrollPeriod = 8;
+            payrollPeriod = 7;
         } else if(currentDate >= 16 && currentDate <= 30){
-            payrollPeriod = 9;
+            payrollPeriod = 8;
         }
         break;
     case Calendar.DECEMBER:
         if(currentDate >= 1 && currentDate <= 15){
-            payrollPeriod = 9;
+            payrollPeriod = 8;
         } else if(currentDate >= 16 && currentDate <= 31){
-            payrollPeriod = 10;
+            payrollPeriod = 9;
         }
         break;
     case Calendar.JANUARY:
         if(currentDate >= 1 && currentDate <= 15){
-            payrollPeriod = 10;
+            payrollPeriod = 9;
             payrollYear--;
         } else if(currentDate >= 16 && currentDate <= 31){
-            payrollPeriod = 11;
+            payrollPeriod = 10;
             payrollYear--;
         }
         break;
     case Calendar.FEBRUARY:
         if (currentDate >= 1 && currentDate <= 15) {
-            payrollPeriod = 11;
+            payrollPeriod = 10;
             payrollYear--;
         } else if(currentDate >= 16 && currentDate <= 29){
-            payrollPeriod = 12;
+            payrollPeriod = 11;
             payrollYear--;
         }
         break;
     case Calendar.MARCH:
-        if (currentDate >= 1 && currentDate <= 19) {
-            payrollPeriod = 11;
+        if (currentDate >= 1 && currentDate <= 22) {
+            payrollPeriod = 7;
             payrollYear--;
-        } else if(currentDate >= 20 && currentDate <= 31){
-            payrollPeriod = 1;
+        } else if(currentDate >= 16 && currentDate <= 31){
+            payrollPeriod = 12;
+			payrollYear--;
         }
         break;
+	case Calendar.APRIL:
+        if(currentDate >= 1 && currentDate <= 15){
+            payrollPeriod = 12;
+			payrollYear--;
+        } else if(currentDate >= 16 && currentDate <= 30){
+            payrollPeriod = 1;
+        }
+        break;	
     default:
         payrollPeriod = 0;
         break;
@@ -194,31 +203,34 @@ String payrollPeriodStr = String.valueOf(payrollPeriod);
 String payrollYearStr = String.valueOf(payrollYear);
 
 ArrayList ukgList = new ArrayList();
-ukgList = ukgNotificationController.calculateAttendanceIndicatorCount(payrollPeriodStr, payrollYearStr, "1000", "NAVEENK3008");
-ArrayList ukgListCreatedOn = ukgNotificationController.calculateAttendanceIndicatorCountCreatedOn(payrollPeriodStr, payrollYearStr, "1000", "NAVEENK3008");
-out.println("Payroll Period: " + payrollPeriodStr);
-out.println("Payroll Year: " + payrollYearStr);
+//ukgList = ukgNotificationController.calculateAttendanceIndicatorCount(payrollPeriodStr, payrollYearStr, companyCode, portalId.toUpperCase(), createdOnDate);
+ArrayList ukgListCreatedOn = ukgNotificationController.calculateAttendanceIndicatorCountCreatedOn(payrollPeriodStr, payrollYearStr, companyCode, portalId.toUpperCase());
+
 
 // Calculate previous and next payroll dates
-String[] months = {"Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar"};
-String prevStartMonth = months[(payrollPeriod == 1) ? 11 : (payrollPeriod - 2)]; // Index adjustment
-String prevEndMonth = months[(payrollPeriod == 1) ? 0 : (payrollPeriod - 1)]; // Index adjustment
-String nextStartMonth = prevEndMonth; // Index adjustment
-String nextEndMonth = months[(payrollPeriodN - 1) % 12]; // Index adjustment
+String[] months = {"May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr"};
+String prevStartMonth = months[(payrollPeriod == 1) ? 11 : (payrollPeriod - 2)];
+String prevEndMonth = months[(payrollPeriod == 1) ? 0 : (payrollPeriod - 1)];
+String nextStartMonth = prevEndMonth;
+String nextEndMonth = months[(payrollPeriodN - 1) % 12];
 
 int prevYear = (payrollPeriod == 1) ? payrollYear - 1 : payrollYear;
 int nextYear = (payrollPeriodN == 1) ? payrollYearN : payrollYearN ;
 
-out.println("Previous Payroll Start Date: 16-" + prevStartMonth + "-" + prevYear);
-out.println(" End Date: 15-" + prevEndMonth + "-" + payrollYear);
-
 
 out.println("<br><br>");
-
-out.println("<table>");
-out.println("<td>");
 out.println("<table border='1' >");
-out.println("<tr><th>Attendance Indicator</th><th>COUNT (Attendance Indicator)</th></tr>");
+
+out.println("<td>");
+out.println("<table  >");
+
+out.println("Payroll Period: " + payrollPeriodStr);
+out.println("Payroll Year: " + payrollYearStr);
+
+out.println("<br><br>");
+out.println("Previous Pay Period Start Date: 16-" + prevStartMonth + "-" + prevYear);
+out.println(" End Date: 15-" + prevEndMonth + "-" + payrollYear);
+/*out.println("<tr><th>Attendance Indicator</th><th>COUNT </th></tr>");
 
 // Iterate over the ukgList and print each value
 for (Object obj : ukgList) {
@@ -230,10 +242,64 @@ for (Object obj : ukgList) {
         }
         out.println("</tr>");
     }
+}*/
+
+
+String payrollPeriodStrN = String.valueOf(payrollPeriodN);
+String payrollYearStrN = String.valueOf(payrollYearN);
+
+ArrayList ukgListN = new ArrayList();
+//ukgListN = ukgNotificationController.calculateAttendanceIndicatorCount(payrollPeriodStrN, payrollYearStrN, companyCode, portalId.toUpperCase(), createdOn);
+ArrayList ukgListNCreatedOn = ukgNotificationController.calculateAttendanceIndicatorCountCreatedOn(payrollPeriodStrN, payrollYearStrN, companyCode, portalId.toUpperCase());
+
+
+out.println("<br><br><br><br>");
+out.println("<table >");
+
+out.println("<br><br>");
+String lastRequested = null; 
+
+for (Object obj : ukgListNCreatedOn) {
+    if (obj instanceof String[]) {
+        String[] created = (String[]) obj;
+        for (String createdOn : created) {
+            lastRequested = createdOn; 
+        }
+    }
 }
 
+if (lastRequested != null) {
+    out.println("Last Requested : " + lastRequested);
+}
+
+
+out.println("<br><br><br><br><br><br>");
+out.println("Payroll Period: " + payrollPeriodStrN);
+out.println("Payroll Year: " + payrollYearStrN);
+
+out.println("<br><br>");
+// Print the details for the next payroll period
+out.println("Current Pay Period Start Date: 16-" + nextStartMonth + "-" + payrollYear);
+out.println(" End Date: 15-" + nextEndMonth + "-" + nextYear);
+
+/*out.println("<tr><th>Attendance Indicator</th><th>COUNT </th></tr>");
+
+// Iterate over the ukgList and print each value
+for (Object obj : ukgListN) {
+    if (obj instanceof String[]) {
+        String[] array = (String[]) obj;
+        out.println("<tr>");
+        for (String element : array) {
+            out.println("<td>" + element + "</td>");
+        }
+        out.println("</tr>");
+    }
+}*/
+
 out.println("</table>");
+out.println("<br>");
 out.println("</td>");
+
 out.println("<td>");
 
 // Iterate over the ukgListCreatedOn and print each value
@@ -241,18 +307,15 @@ for (Object obj : ukgListCreatedOn) {
     if (obj instanceof String[]) {
         String[] created = (String[]) obj;
 		for(String createdOn : created){
-			out.println(" >>> Created On :"+createdOn);
-		}
-    }
-}
-
-out.println("<table border='1' >");
-out.println("<tr><th>Attendance Indicator</th><th>COUNT (Attendance Indicator)</th></tr>");
+			ukgList = ukgNotificationController.calculateAttendanceIndicatorCount(payrollPeriodStr, payrollYearStr, companyCode, portalId.toUpperCase(), createdOn);
+			out.println("Requested : "+createdOn);
+			out.println("<table border='1' >");
+out.println("<tr><th>Attendance Indicator</th><th>COUNT </th></tr>");
 
 // Iterate over the ukgList and print each value
-for (Object obj : ukgList) {
-    if (obj instanceof String[]) {
-        String[] array = (String[]) obj;
+for (Object obj1 : ukgList) {
+    if (obj1 instanceof String[]) {
+        String[] array = (String[]) obj1;
         out.println("<tr>");
         for (String element : array) {
             if (element.equals("DYR") || element.equals("LWP")) {
@@ -268,67 +331,28 @@ for (Object obj : ukgList) {
         out.println("</tr>");
     }
 }
-
 out.println("</table>");
-out.println("</td>");
-out.println("</table>");
-
-
-
-String payrollPeriodStrN = String.valueOf(payrollPeriodN);
-String payrollYearStrN = String.valueOf(payrollYearN);
-
-ArrayList ukgListN = new ArrayList();
-ukgListN = ukgNotificationController.calculateAttendanceIndicatorCount(payrollPeriodStrN, payrollYearStrN, "1000", "NAVEENK3008");
-ArrayList ukgListNCreatedOn = ukgNotificationController.calculateAttendanceIndicatorCountCreatedOn(payrollPeriodStrN, payrollYearStrN, "1000", "NAVEENK3008");
-out.println("<br>");
-out.println("Payroll Period: " + payrollPeriodStrN);
-out.println("Payroll Year: " + payrollYearStrN);
-
-// Print the details for the next payroll period
-out.println("Next Payroll Start Date: 16-" + nextStartMonth + "-" + payrollYear);
-out.println(" End Date: 15-" + nextEndMonth + "-" + nextYear);
-
-
-out.println("<br><br>");
-out.println("<table>");
-out.println("<td>");
-out.println("<table border='1' >");
-out.println("<tr><th>Attendance Indicator</th><th>COUNT (Attendance Indicator)</th></tr>");
-
-// Iterate over the ukgList and print each value
-for (Object obj : ukgListN) {
-    if (obj instanceof String[]) {
-        String[] array = (String[]) obj;
-        out.println("<tr>");
-        for (String element : array) {
-            out.println("<td>" + element + "</td>");
-        }
-        out.println("</tr>");
+		}
     }
 }
 
-out.println("</table>");
-out.println("</td>");
-out.println("<td>");
 
+
+out.println("<br><br>");
 // Iterate over the ukgListNCreatedOn and print each value
 for (Object obj : ukgListNCreatedOn) {
     if (obj instanceof String[]) {
         String[] created = (String[]) obj;
 		for(String createdOn : created){
-			out.println(" >>> Created On :"+createdOn);
-		}
-    }
-}
-
-out.println("<table border='1' >");
-out.println("<tr><th>Attendance Indicator</th><th>COUNT (Attendance Indicator)</th></tr>");
+			ukgListN = ukgNotificationController.calculateAttendanceIndicatorCount(payrollPeriodStrN, payrollYearStrN, companyCode, portalId.toUpperCase(), createdOn);
+			out.println("Requested : "+createdOn);
+			out.println("<table border='1' >");
+out.println("<tr><th>Attendance Indicator</th><th>COUNT </th></tr>");
 
 // Iterate over the ukgList and print each value
-for (Object obj : ukgListN) {
-    if (obj instanceof String[]) {
-        String[] array = (String[]) obj;
+for (Object obj2 : ukgListN) {
+    if (obj2 instanceof String[]) {
+        String[] array = (String[]) obj2;
         out.println("<tr>");
         for (String element : array) {
             if (element.equals("DYR") || element.equals("LWP")) {
@@ -346,8 +370,14 @@ for (Object obj : ukgListN) {
 }
 
 out.println("</table>");
+		}
+    }
+}
+
+out.println("<br>");	
 out.println("</td>");
 out.println("</table>");
+
 
 
 %>
@@ -356,6 +386,7 @@ out.println("</table>");
 </form>
  </body>
 </html>
+
 
 
 
@@ -407,7 +438,7 @@ public class ukgnotification {
 		utilityObj = new Utility();
 	}
 
-	public ArrayList calculateAttendanceIndicatorCount(String payrollPeriod,String payrollYear,String companyCode,String createdBy)throws Exception
+	public ArrayList calculateAttendanceIndicatorCount(String payrollPeriod,String payrollYear,String companyCode,String createdBy,String createdOnDate)throws Exception
 	{
 		String getCalculatedAttendanceIndicatorCount= "";
 		ArrayList result= null;
@@ -419,7 +450,8 @@ public class ukgnotification {
                                                 "AND payrollyear = '" + payrollYear + "' " +
                                                 "AND companycode = '" + companyCode + "' " +
                                                 "AND createdby = '" + createdBy + "' " +
-                                                "GROUP BY a.attendanceindicator " +
+												"AND TO_CHAR(createdon,'DD-MON-YYYY') = '" + createdOnDate + "' " +
+                                                "GROUP BY a.attendanceindicator " +									
                                                 "ORDER BY 1";
 
 			result	= sqlUtility.executeQuery(getCalculatedAttendanceIndicatorCount,null);
@@ -514,9 +546,9 @@ public class ukgnotificationController {
 	
 	ukgnotification ukgnotificationObj=new ukgnotification();
 	
-	public ArrayList calculateAttendanceIndicatorCount(String payrollPeriod,String payrollYear,String companyCode,String createdBy)throws Exception{
+	public ArrayList calculateAttendanceIndicatorCount(String payrollPeriod,String payrollYear,String companyCode,String createdBy,String createdOnDate)throws Exception{
 
-        ArrayList result= ukgnotificationObj.calculateAttendanceIndicatorCount(payrollPeriod,payrollYear,companyCode,createdBy);
+        ArrayList result= ukgnotificationObj.calculateAttendanceIndicatorCount(payrollPeriod,payrollYear,companyCode,createdBy,createdOnDate);
         
         return result;
     }
@@ -579,9 +611,9 @@ public class ukgnotificationWebController implements java.io.Serializable {
     @Comments						: this method returns calculated attendence count
     */
 
-    public ArrayList calculateAttendanceIndicatorCount(String payrollPeriod,String payrollYear,String companyCode,String createdBy){
+    public ArrayList calculateAttendanceIndicatorCount(String payrollPeriod,String payrollYear,String companyCode,String createdBy,String createdOnDate)throws Exception{
 
-        ArrayList result= ukgNotificationControlllerObj.calculateAttendanceIndicatorCount(payrollPeriod,payrollYear,companyCode,createdBy);
+        ArrayList result= ukgNotificationControllerObj.calculateAttendanceIndicatorCount(payrollPeriod,payrollYear,companyCode,createdBy,createdOnDate);
         
         return result;
     }
